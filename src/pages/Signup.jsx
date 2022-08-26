@@ -13,6 +13,8 @@ const Signup = () => {
     document.getElementById("signinDiv").hidden=true;
   }
 
+  
+
   useEffect(()=>{
     /* global google */
     google.accounts.id.initialize({
