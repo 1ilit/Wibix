@@ -5,7 +5,7 @@ const HomeBanner = () => {
   return (
     <>
       <div className="home-banner">
-        <div className="position-relative">
+        <div>
           <video src={video} autoPlay loop muted className="">
             your browser does not support this feature
           </video>

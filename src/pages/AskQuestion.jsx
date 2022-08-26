@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Accordion from "../components/Accordion";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Tag from "../components/Tag";
+// import Tag from "../components/Tag";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import ReactQuill from "react-quill";
@@ -15,14 +15,14 @@ import { useState } from "react";
 window.katex = katex;
 
 const AskQuestion = () => {
-  const [math, setMath] = useState(false);
-  const [advMath, setAdvMath] = useState(false);
-  const [bio, setBio] = useState(false);
-  const [chem, setChem] = useState(false);
-  const [phys, setPhys] = useState(false);
-  const [cs, setCs] = useState(false);
-  const [eng, setEng] = useState(false);
-  const [other, setOther] = useState(false);
+  // const [math, setMath] = useState(false);
+  // const [advMath, setAdvMath] = useState(false);
+  // const [bio, setBio] = useState(false);
+  // const [chem, setChem] = useState(false);
+  // const [phys, setPhys] = useState(false);
+  // const [cs, setCs] = useState(false);
+  // const [eng, setEng] = useState(false);
+  // const [other, setOther] = useState(false);
   const [html, setHtml] = useState("");
   const [title, setTitle] = useState("");
 
@@ -107,7 +107,7 @@ const AskQuestion = () => {
                 }}
               />
             </div>
-            <div className="my-3 form-group">
+            {/* <div className="my-3 form-group">
               <p className="fw-bold">Tags</p>
               <div className="d-flex flex-wrap">
                 <Tag
@@ -151,8 +151,7 @@ const AskQuestion = () => {
                   select={() => setOther(!other)}
                 />
               </div>
-              <div id="test"></div>
-            </div>
+            </div> */}
             <button
               type="button"
               className="btn-burnt-umber px-3 py-2 mt-2 mx-1"
