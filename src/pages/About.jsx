@@ -3,12 +3,14 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import AboutBanner from "../components/AboutBanner";
 import emailjs from "emailjs-com";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 const About = () => {
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
-      emailjs
+    emailjs
       .sendForm(
         "service_9jo4ous",
         "template_wh864ib",
@@ -18,17 +20,16 @@ const About = () => {
       .then(
         (result) => {
           console.log(result.text);
-          alert("Your message has been successfully submitted. Thanks for the feedback!");
+          alert(
+            "Your message has been successfully submitted. Thanks for the feedback!"
+          );
           e.target.reset();
         },
         (error) => {
           console.log(error.text);
-          alert("Oops, something went wrong. Please, try again.")
+          alert("Oops, something went wrong. Please, try again.");
         }
       );
-
-
-
   };
   return (
     <div>
@@ -39,7 +40,7 @@ const About = () => {
         <h1 className="fw-bold my-4 ms-4">About Us</h1>
         <div className="row">
           <div className="col-md-3">
-            <div className="bg-light border border-muted p-3">
+            <div className="bg-light border border-muted p-3 mb-4">
               <h5 className="mb-4">
                 <i className="fa-solid fa-list me-3"></i>Table of contents
               </h5>
@@ -71,6 +72,34 @@ const About = () => {
             </div>
           </div>
           <div className="col-md-9">
+            {/* who are we */}
+            <div className="row text-center mb-4" id="1">
+              <h1 className="fw-bold mb-4">
+                We are <i className="fa-brands fa-hubspot h2 logo-font"></i>
+                <span className="mx-2 fw-bold logo-font">wibix</span>
+              </h1>
+              <div className="mx-0 mx-md-5">
+                <p>
+                  Wibix was created in 2022 with the goal of building a big hub
+                  to provide people with virtual space to share their inquires
+                  about academics.
+                </p>
+                <p>
+                  It later grew into the wibix we know today that allows you to
+                  find and share resources from various univerities, courses,
+                  topics, etc. Now users can connect to professionals, students
+                  in their field of study, or people passionate about the given
+                  topic, with the help of wibix.{" "}
+                </p>
+                <p>
+                  It has always been our goal to encourage and empower learners
+                  and capitalize on the importance of education. So here we are
+                  today.
+                </p>
+                <p className="fw-bold">Wibix is here to help.</p>
+              </div>
+            </div>
+
             {/* teams section */}
             <div className="row p-3 align-items-center" id="3">
               <div className="col-md-6 text-center">
@@ -147,9 +176,76 @@ const About = () => {
               </div>
             </div>
 
-            {/* career */}
-            <div className="row">
+            {/* partners */}
 
+            <div className="row text-center my-4" id="4">
+              <hr />
+              <h2 className="mnb-5">Our partners</h2>
+              <Carousel>
+                <Carousel.Item>
+                  <div className="d-block w-100">
+                    <div className="d-flex justify-content-center align-items-center">
+                      <img
+                        className="w-30"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtSNIg8afrT633tJqHFNcsPywBmclSlYqjiQ&usqp=CAU"
+                        alt="company 1"
+                      />
+                      <img
+                        className="w-30"
+                        src="https://media.istockphoto.com/vectors/flat-hexagonal-cube-rocket-launching-technology-logo-brand-identity-vector-id1227650500?k=20&m=1227650500&s=612x612&w=0&h=HdOfo97yCCUTKfhcdrVk31gUdZCyEDP86zL3QHi5BeY="
+                        alt="company 2"
+                      />
+                      <img
+                        className="w-30"
+                        src="https://cdn2.vectorstock.com/i/thumb-large/63/71/turf-logo-icon-vector-29376371.jpg"
+                        alt="company 3"
+                      />
+                    </div>
+                  </div>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <div className="d-flex justify-content-center align-items-center">
+                    <img
+                      className="w-30"
+                      src="https://us.123rf.com/450wm/lumut/lumut1811/lumut181100348/112543185-infinity-design-vector-icon-illustration-logo-template-design.jpg?ver=6"
+                      alt="company 4"
+                    />
+                    <img
+                      className="w-30"
+                      src="https://media.istockphoto.com/vectors/dapp-development-design-computer-networking-vector-design-laptop-with-vector-id1325854025?k=20&m=1325854025&s=612x612&w=0&h=7rFnDcrPBXBZDa_PXw11IZpmIYpBwtdNtISvPuG5nuc="
+                      alt="company 5"
+                    />
+                    <img
+                      className="w-30"
+                      src="https://media.istockphoto.com/vectors/colorful-vector-template-brain-logo-artificial-intelligence-logo-vector-id1138887061?k=20&m=1138887061&s=612x612&w=0&h=A10i9ADcz_BnblaAjv77soAD44aX3uavXvdXQfXIZ6Q="
+                      alt="company 6"
+                    />
+                  </div>
+                </Carousel.Item>
+              </Carousel>
+
+            </div>
+
+            {/* careers */}
+            <div className="row align-items-center text-center my-5" id="5">
+              <hr />
+              <div className="col-md-4">
+                <h2 className="text-white p-3 bg-terracotta border rounded">
+                  <i className="fa-solid fa-bullhorn me-2"></i>We are hiring!
+                </h2>
+              </div>
+              <div className="col-md-7 mx-4">
+                <h3 className="fw-bold">Join our team</h3>
+                <p>
+                  Investopedia is a fast-growing company and we are always
+                  looking for motivated, multi-talented, and organized people to
+                  join our team. We highly incourage web developers that are
+                  interested in contributing to growing the wibix web app to
+                  reach out to us by email and send their resumes. For any
+                  inquires, fill free to contact us.
+                </p>
+              </div>
+              <hr />
             </div>
 
             {/* contact us section */}
@@ -196,11 +292,22 @@ const About = () => {
                   </div>
                   <div className="for-group">
                     <label className="my-2">Email</label>
-                    <input type="email" name="email"  id="email" className="form-control" placeholder="Email" />
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      className="form-control"
+                      placeholder="Email"
+                    />
                   </div>
                   <div className="form-group">
                     <label className="my-2">Message</label>
-                    <textarea name="message" id="message" className="form-control" placeholder="Message"/>
+                    <textarea
+                      name="message"
+                      id="message"
+                      className="form-control"
+                      placeholder="Message"
+                    />
                   </div>
 
                   <div className="d-flex justify-content-between align-items-center">
@@ -209,15 +316,14 @@ const About = () => {
                       value="Send message"
                       className="btn-burnt-umber py-2 px-3 mt-3"
                     />
-                    <div className="text-danger d-none" id="message"> Please fill the form properly.</div>
+                    <div className="text-danger d-none" id="message">
+                      {" "}
+                      Please fill the form properly.
+                    </div>
                   </div>
-
                 </form>
               </div>
-
-
             </div>
-
           </div>
         </div>
       </div>

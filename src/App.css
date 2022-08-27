@@ -309,6 +309,19 @@
   color: #8f342e ;
 }
 
+.bg-terracotta{
+  background-color: #b45c55 ;
+}
+.w-30{
+  width: 30%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.mnb-5{
+  margin-bottom: -7.25rem;
+}
+
 @media screen and (max-width: 960px) {
   .home-banner h1 {
     font-size: 48px;
