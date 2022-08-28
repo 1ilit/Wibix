@@ -237,7 +237,7 @@ const About = () => {
               <div className="col-md-7 mx-4">
                 <h3 className="fw-bold">Join our team</h3>
                 <p>
-                  Investopedia is a fast-growing company and we are always
+                  Wibix is a fast-growing company and we are always
                   looking for motivated, multi-talented, and organized people to
                   join our team. We highly incourage web developers that are
                   interested in contributing to growing the wibix web app to

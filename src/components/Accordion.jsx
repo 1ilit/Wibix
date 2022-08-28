@@ -75,7 +75,7 @@ const Accordion = () => {
             aria-expanded="false"
             aria-controls="collapseThree"
           >
-            3. Add tags
+            3. Check the question again
           </button>
         </h2>
         <div
@@ -87,7 +87,7 @@ const Accordion = () => {
           <div className="accordion-body">
             <ul>
               <li>
-                Add tags by clicking on the cross, to make it easier for helpers to find your question
+                Proofread your question and make sure everything is well-explained
               </li>
             </ul>
           </div>
