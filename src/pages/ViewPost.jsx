@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Moment from "react-moment";
 import { urlForum } from "../endpoints";
@@ -74,6 +74,8 @@ const ViewPost = () => {
     <>
       <Navbar />
       <div className="container my-3">
+      <p><Link to="/forum" className="wibix-link">Forum</Link> <i className="fa-solid fa-angles-right mx-2"></i>{post.heading}</p>
+      <hr />
         <h2 className="ms-4">{post.heading}</h2>
         <p className="ms-4 text-muted">
           Posted on <Moment format="llll">{post.date}</Moment>

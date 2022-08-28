@@ -10,6 +10,7 @@ import Forum from './pages/Forum';
 import ViewPost from './pages/ViewPost';
 import AskQuestion from './pages/AskQuestion';
 import FAQs from './pages/FAQs';
+import ViewSchool from './pages/ViewSchool';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="forum/:postId" element={<ViewPost/>}/>
           <Route path="/askQuestion" element={<AskQuestion/>}/>
           <Route path="/faq" element={<FAQs/>}/>
+          <Route path="/resources/schools/:schoolId" element={<ViewSchool/>}/>
         </Routes>
       </Router>
     </>

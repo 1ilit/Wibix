@@ -323,8 +323,16 @@
   width: 40% !important;
 }
 
+.w-md-50{
+  width: 50%;
+}
+
 .mnb-5{
   margin-bottom: -7.25rem;
+}
+
+button{
+  border: 0px solid #000;
 }
 
 @media screen and (max-width: 960px) {
@@ -352,6 +360,10 @@
 
   .abt-banner p {
     font-size: 18px;
+  }
+
+  .w-md-50{
+    width: 100%;
   }
 }
 
