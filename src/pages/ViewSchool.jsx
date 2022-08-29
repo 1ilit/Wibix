@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link , useNavigate} from "react-router-dom";
 import axios from "axios";
 import { urlRes } from "../endpoints";
 import Navbar from "../components/Navbar";
@@ -10,6 +10,10 @@ const ViewSchool = () => {
   const [school, setSchool] = useState([]);
   const [courses, setCourses] = useState([]);
   const [mode, setMode] = useState("popular");
+  const [searchStr, setSearchStr] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+
+  const navigate=useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -33,6 +37,40 @@ const ViewSchool = () => {
     };
     getData();
   }, [mode, schoolId]);
+
+  const handleChange = (e) => {
+    setSearchStr(e.target.value);
+    console.log(searchStr);
+    const newFilter = courses.filter((value) => {
+      return value.courseName.toLowerCase().includes(searchStr.toLowerCase());
+    });
+
+    setFilteredData(newFilter);
+    
+  };
+
+  const handleCourseSearch = async (e) => {
+    e.preventDefault();
+
+    await axios
+      .get(`${urlRes}/SSD/${searchStr}/${schoolId}`)
+      .then((response) => {
+        console.log(response);
+        navigate(`/resources/schools/courses/${response.data}`);
+      })
+      .catch((error) => navigate("/courseNotFound"));
+    // courses?.forEach((c)=>{
+    //   if(c.courseName.toLowerCase()===searchStr.toLowerCase()){
+    //     navigate(`/resources/schools/courses/${c.id}`);
+    //   }
+    // });
+  };
+
+
+  const clearFilter = () => {
+    setSearchStr("");
+    setFilteredData([]);
+  };
 
   return (
     <>
@@ -100,6 +138,57 @@ const ViewSchool = () => {
             );
           })}
         </div>
+          
+
+          <div className="text-center">
+
+          </div>
+        <form className="my-4">
+          <div className="d-flex justify-content-center">
+            <input
+              className="form-control me-3 w-40"
+              placeholder="UBI202"
+              onChange={handleChange}
+              id="input"
+            />
+            <button
+              className="btn-burnt-umber my-2 my-sm-0 px-3 py-2"
+              type="button"
+              onClick={handleCourseSearch}
+              id="search-button"
+            >
+              Search
+            </button>
+          </div>
+
+          {filteredData.length !== 0 && (
+            <div className="bg-light border border-muted w-50 mx-auto my-2">
+              <div className="text-end">
+                <button
+                  type="button"
+                  className="px-2"
+                  onClick={clearFilter}
+                >
+                  <i className="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              {filteredData.map((s, key) => {
+                return (
+                  <div className="bg-white m-2 p-2 text-start">
+                    <Link
+                      className="wibix-link p-2"
+                      to={`/resources/schools/courses/${s.id}`}
+                    >
+                      {s.courseName}
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </form>
+
+
       </div>
       <Footer />
     </>

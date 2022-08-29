@@ -16,7 +16,6 @@ const Resources = () => {
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(`${urlRes}/Schools`);
-      //console.log(response);
       setSchools(response.data);
     };
     getData();
@@ -28,9 +27,7 @@ const Resources = () => {
     const newFilter = schools.filter((value) => {
       return value.name.toLowerCase().includes(searchStr.toLowerCase());
     });
-
     setFilteredData(newFilter);
-    
   };
 
   const handleSchoolSearch = async (e) => {
