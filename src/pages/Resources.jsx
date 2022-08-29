@@ -28,21 +28,26 @@ const Resources = () => {
     const newFilter = schools.filter((value) => {
       return value.name.toLowerCase().includes(searchStr.toLowerCase());
     });
-  
+
     setFilteredData(newFilter);
+    
   };
 
   const handleSchoolSearch = async (e) => {
     e.preventDefault();
-    var response = await axios.get(`${urlRes}/SID/${searchStr}`);
-    console.log(response);
-    navigate(`/resources/schools/${response.data}`);
+    await axios
+      .get(`${urlRes}/SID/${searchStr}`)
+      .then((response) => {
+        console.log(response);
+        navigate(`/resources/schools/${response.data}`);
+      })
+      .catch((error) => navigate("/schoolNotFound"));
   };
 
-  const clearFilter=()=>{
+  const clearFilter = () => {
     setSearchStr("");
     setFilteredData([]);
-  }
+  };
 
   return (
     <div>
@@ -66,31 +71,37 @@ const Resources = () => {
               className="btn-burnt-umber my-2 my-sm-0 px-3 py-2"
               type="button"
               onClick={handleSchoolSearch}
+              id="search-button"
             >
               Search
             </button>
           </div>
 
-          {(filteredData.length !== 0) && (
-              <div className="bg-light border border-muted w-50 mx-auto my-2">
-                <div className="text-end">
-                  <button type="button" className="btn-burnt-umber px-2" onClick={clearFilter}><i className="fa-solid fa-xmark"></i></button>
-                </div>
-                {filteredData.map((s, key) => {
-                  return (
-                    <div className="bg-white m-2 p-2 text-start">
-                      <Link
-                        className="wibix-link p-2"
-                        to={`/resources/schools/${s.id}`}
-                      >
-                        {s.name}
-                      </Link>
-                    </div>
-                  );
-                })
-                }
+          {filteredData.length !== 0 && (
+            <div className="bg-light border border-muted w-50 mx-auto my-2">
+              <div className="text-end">
+                <button
+                  type="button"
+                  className="px-2"
+                  onClick={clearFilter}
+                >
+                  <i className="fa-solid fa-xmark"></i>
+                </button>
               </div>
-            )}
+              {filteredData.map((s, key) => {
+                return (
+                  <div className="bg-white m-2 p-2 text-start">
+                    <Link
+                      className="wibix-link p-2"
+                      to={`/resources/schools/${s.id}`}
+                    >
+                      {s.name}
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </form>
         <h4 className="fw-bold my-3">
           Schools on <span className="logo-font">wibix</span>

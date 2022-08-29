@@ -327,6 +327,10 @@
   width: 50%;
 }
 
+.w-md-20{
+  width: 20%;
+}
+
 .mnb-5{
   margin-bottom: -7.25rem;
 }
@@ -362,7 +366,7 @@ button{
     font-size: 18px;
   }
 
-  .w-md-50{
+  .w-md-50, .w-md-20{
     width: 100%;
   }
 }

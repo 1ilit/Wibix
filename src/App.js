@@ -11,6 +11,8 @@ import ViewPost from './pages/ViewPost';
 import AskQuestion from './pages/AskQuestion';
 import FAQs from './pages/FAQs';
 import ViewSchool from './pages/ViewSchool';
+import SchoolNotFound from './pages/SchoolNotFound';
+import ViewCourse from './pages/ViewCourse'
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/askQuestion" element={<AskQuestion/>}/>
           <Route path="/faq" element={<FAQs/>}/>
           <Route path="/resources/schools/:schoolId" element={<ViewSchool/>}/>
+          <Route path="/schoolNotFound" element={<SchoolNotFound/>}/>
+          <Route path="/resources/schools/courses/:courseId" element={<ViewCourse/>}/>
         </Routes>
       </Router>
     </>

@@ -30,7 +30,6 @@ const Footer = () => {
                 <h6 className="fw-bold mb-3">About</h6>
                 <p><Link className="footer-link" to="/about">About Us</Link></p>
                 <p><Link className="footer-link" to="/faq">FAQs</Link></p>
-                <p><Link className="footer-link" to="/updates">Updates</Link></p>
             </div>
             <div className="col-md-2 ms-5 mt-3">
                 <h6 className="fw-bold mb-3">Legal</h6>
