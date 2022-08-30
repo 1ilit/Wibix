@@ -140,8 +140,8 @@ const ViewSchool = () => {
         </div>
           
 
-          <div className="text-center">
-
+          <div className="text-center mt-5">
+              <h4>Search for your course</h4>
           </div>
         <form className="my-4">
           <div className="d-flex justify-content-center">

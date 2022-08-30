@@ -57,12 +57,14 @@ const AskQuestion = () => {
           Hey, what's on your mind?
         </h2>
       </div>
+
       <div className="row m-0">
         <div className="col-md-7 ms-md-5 p-5">
           <p className="d-md-none text-muted">
             *Kindly refer to 'How to ask' at the bottom of the page*
           </p>
-          <form>
+          <div className="bg-light border border-muted p-4">
+            <form>
             <div className="form-group">
               <label htmlFor="title" className="fw-bold">
                 Title
@@ -160,6 +162,8 @@ const AskQuestion = () => {
               Post Question
             </button>
           </form>
+          </div>
+          
         </div>
 
         <div className="col-md-4 mt-2 p-5">

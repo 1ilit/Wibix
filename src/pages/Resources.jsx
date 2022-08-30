@@ -100,7 +100,11 @@ const Resources = () => {
             </div>
           )}
         </form>
-        <h4 className="fw-bold my-3">
+        <p className="my-3 fw-bold text-muted">or</p>
+        <h5 className="mb-5">Post your documents <Link to="/postRes" className="btn-burnt-umber px-3 py-2">here</Link></h5>
+
+        <hr />
+        <h4 className="fw-bold my-5">
           Schools on <span className="logo-font">wibix</span>
         </h4>
 

@@ -14,6 +14,7 @@ import ViewSchool from './pages/ViewSchool';
 import SchoolNotFound from './pages/SchoolNotFound';
 import ViewCourse from './pages/ViewCourse' 
 import CourseNotFound from './pages/CourseNotFound';
+import PostResource from './pages/PostResource';
 function App() {
   return (
     <>
@@ -32,6 +33,7 @@ function App() {
           <Route path="/schoolNotFound" element={<SchoolNotFound/>}/>
           <Route path="/resources/schools/courses/:courseId" element={<ViewCourse/>}/>
           <Route path="/courseNotFound" element={<CourseNotFound/>}/>
+          <Route path="/postRes" element={<PostResource/>}/>
         </Routes>
       </Router>
     </>

@@ -44,27 +44,27 @@ const About = () => {
               <h5 className="mb-4">
                 <i className="fa-solid fa-list me-3"></i>Table of contents
               </h5>
-              <p className="px-3 py-2 bg-white border border-muted li-accent">
+              <p className="px-3 py-2 bg-white li-accent">
                 <a href="#1" className="wibix-link no-decor fw-bold">
                   Who are we
                 </a>
               </p>
-              <p className="px-3 py-2 bg-white border border-muted li-accent">
+              <p className="px-3 py-2 bg-white li-accent">
                 <a href="#3" className="wibix-link no-decor fw-bold">
                   Our team
                 </a>
               </p>
-              <p className="px-3 py-2 bg-white border border-muted li-accent">
+              <p className="px-3 py-2 bg-white li-accent">
                 <a href="#4" className="wibix-link no-decor fw-bold">
                   Our Partners
                 </a>
               </p>
-              <p className="px-3 py-2 bg-white border border-muted li-accent">
+              <p className="px-3 py-2 bg-white li-accent">
                 <a href="#5" className="wibix-link no-decor fw-bold">
                   Careers
                 </a>
               </p>
-              <p className="px-3 py-2 bg-white border border-muted li-accent">
+              <p className="px-3 py-2 bg-white li-accent">
                 <a href="#6" className="wibix-link no-decor fw-bold">
                   Contact us
                 </a>

@@ -228,12 +228,22 @@
   border-bottom: 1px solid #c9ccd3;
 }
 
-#ql-editor .ql-toolbar {
+#ql-editor-post {
+  height: 150px;
+  resize: vertical;
+  overflow-y: scroll;
+  border-top: 1px solid #c9ccd3;
+  border-bottom: 1px solid #c9ccd3;
+}
+
+#ql-editor .ql-toolbar, #ql-editor-post .ql-toolbar {
   position: sticky;
   z-index: 100;
   background: #e6e3e2;
   top: 0;
 }
+
+
 
 .form-control:focus,
 .form-select:focus,
@@ -337,6 +347,12 @@
 
 button{
   border: 0px solid #000;
+}
+
+.invalid-field{
+  border-color: rgb(240, 105, 96) !important;
+  color: rgb(240, 105, 96) !important;
+  background-color: white !important;
 }
 
 @media screen and (max-width: 960px) {
