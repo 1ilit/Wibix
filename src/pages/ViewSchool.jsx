@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 const ViewSchool = () => {
   const { schoolId } = useParams();
   const [school, setSchool] = useState([]);
-  const [courses, setCourses] = useState([]);
+  // const [courses, setCourses] = useState([]);
   const [mode, setMode] = useState("popular");
   const [searchStr, setSearchStr] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -17,23 +17,8 @@ const ViewSchool = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response1 = await axios.get(`${urlRes}/Schools/${schoolId}`);
-      setSchool(response1.data);
-      var path = "";
-      switch (mode) {
-        case "popular":
-          path = "PopularCourses";
-          break;
-        case "all":
-          path = "AllInSchool";
-          break;
-        default:
-          path = "PopularCourses";
-          break;
-      }
-      const response2 = await axios.get(`${urlRes}/${path}/${schoolId}`);
-      console.log(response2);
-      setCourses(response2.data);
+      const response = await axios.get(`${urlRes}/Schools/${mode}/${schoolId}`);
+      setSchool(response.data);
     };
     getData();
   }, [mode, schoolId]);
@@ -41,7 +26,7 @@ const ViewSchool = () => {
   const handleChange = (e) => {
     setSearchStr(e.target.value);
     console.log(searchStr);
-    const newFilter = courses.filter((value) => {
+    const newFilter = school.courses?.filter((value) => {
       return value.courseName.toLowerCase().includes(searchStr.toLowerCase());
     });
 
@@ -59,11 +44,6 @@ const ViewSchool = () => {
         navigate(`/resources/schools/courses/${response.data}`);
       })
       .catch((error) => navigate("/courseNotFound"));
-    // courses?.forEach((c)=>{
-    //   if(c.courseName.toLowerCase()===searchStr.toLowerCase()){
-    //     navigate(`/resources/schools/courses/${c.id}`);
-    //   }
-    // });
   };
 
 
@@ -96,51 +76,7 @@ const ViewSchool = () => {
         </div>
         <hr />
 
-        <div className="my-2">
-          <button
-            type="button"
-            className={
-              mode === "popular"
-                ? "me-1 h6 modes wibix-link px-3 py-2 underlined"
-                : "me-1 h6 modes wibix-link px-3 py-2"
-            }
-            onClick={() => setMode("popular")}
-          >
-            Popular
-          </button>
-          <button
-            type="button"
-            className={
-              mode === "all"
-                ? "mx-1 h6 modes wibix-link px-3 py-2 underlined"
-                : "mx-1 h6 modes wibix-link px-3 py-2"
-            }
-            onClick={() => setMode("all")}
-          >
-            All
-          </button>
-        </div>
-
-        <div className="my-4 d-flex no-wrap">
-          {courses.map((c, key) => {
-            return (
-              <div className="me-3 bg-light border border-muted p-3 w-md-20">
-                <Link
-                  to={`/resources/schools/courses/${c.id}`}
-                  className="fw-bold wibix-link"
-                >
-                  {c.courseName}
-                </Link>
-                <p className="text-muted">
-                  Number of resources: {c.numberOfRes}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-          
-
-          <div className="text-center mt-5">
+        <div className="text-center mt-4">
               <h4>Search for your course</h4>
           </div>
         <form className="my-4">
@@ -187,6 +123,54 @@ const ViewSchool = () => {
             </div>
           )}
         </form>
+
+        <hr/>
+
+        <div className="my-2">
+          <button
+            type="button"
+            className={
+              mode === "popular"
+                ? "me-1 h6 modes wibix-link px-3 py-2 underlined"
+                : "me-1 h6 modes wibix-link px-3 py-2"
+            }
+            onClick={() => setMode("popular")}
+          >
+            Popular
+          </button>
+          <button
+            type="button"
+            className={
+              mode === "name"
+                ? "mx-1 h6 modes wibix-link px-3 py-2 underlined"
+                : "mx-1 h6 modes wibix-link px-3 py-2"
+            }
+            onClick={() => setMode("name")}
+          >
+            All
+          </button>
+        </div>
+
+        <div className="my-4 d-flex no-wrap">
+          {school.courses?.map((c, key) => {
+            return (
+              <div className="me-3 bg-light border border-muted p-3 w-md-20">
+                <Link
+                  to={`/resources/schools/courses/${c.id}`}
+                  className="fw-bold wibix-link"
+                >
+                  {c.courseName}
+                </Link>
+                <p className="text-muted">
+                  Number of resources: {c.numberOfRes}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+          
+
+          
 
 
       </div>

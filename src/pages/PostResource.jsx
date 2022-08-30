@@ -28,6 +28,14 @@ const PostResource = () => {
     });
   };
 
+  const handleEditor=(e)=>{
+    if(e!==null)
+        setValues({
+        ...values,
+        description: e
+      });
+  }
+
   const handleFile = (e) => {
     if (e.target.files && e.target.files[0]) {
       let doc = e.target.files[0];
@@ -201,11 +209,10 @@ const PostResource = () => {
                 }}
                 className={applyErrorClass("description")}
                 theme="snow"
-                value={values.description}
                 placeholder="Description"
                 modules={PostResource.modules}
                 formats={PostResource.formats}
-                onChange={handleInputChange}
+                onChange={handleEditor}
               />
             </div>
             <div className="form-group my-2">

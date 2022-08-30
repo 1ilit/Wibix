@@ -15,6 +15,8 @@ import SchoolNotFound from './pages/SchoolNotFound';
 import ViewCourse from './pages/ViewCourse' 
 import CourseNotFound from './pages/CourseNotFound';
 import PostResource from './pages/PostResource';
+import ViewResource from './pages/ViewResource';
+import ResNotFound from './pages/ResNotFound'
 function App() {
   return (
     <>
@@ -34,6 +36,8 @@ function App() {
           <Route path="/resources/schools/courses/:courseId" element={<ViewCourse/>}/>
           <Route path="/courseNotFound" element={<CourseNotFound/>}/>
           <Route path="/postRes" element={<PostResource/>}/>
+          <Route path="/resources/schools/courses/resources/:resourceId" element={<ViewResource/>}/>
+          <Route path="/resNotFound" element={<ResNotFound/>}/>
         </Routes>
       </Router>
     </>

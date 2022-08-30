@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Accordion from "../components/Accordion";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -26,10 +26,10 @@ const AskQuestion = () => {
   const [html, setHtml] = useState("");
   const [title, setTitle] = useState("");
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   function delay(delayInms) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         resolve(2);
       }, delayInms);
@@ -40,7 +40,7 @@ const AskQuestion = () => {
     e.preventDefault();
     var response = await axios.post(`${urlForum}/AddPost`, {
       heading: title,
-      body: html
+      body: html,
     });
     console.log(response);
     delay(2000);
@@ -58,58 +58,67 @@ const AskQuestion = () => {
         </h2>
       </div>
 
-      <div className="row m-0">
-        <div className="col-md-7 ms-md-5 p-5">
-          <p className="d-md-none text-muted">
-            *Kindly refer to 'How to ask' at the bottom of the page*
+      <div className="container">
+        <div className="row m-0">
+          <p className="mt-4 ms-2">
+            <Link to="/forum" className="wibix-link">
+              Forum
+            </Link>{" "}
+            <i className="fa-solid fa-angles-right mx-2"></i>
+            <span className="fw-bold">Ask a question</span>
           </p>
-          <div className="bg-light border border-muted p-4">
-            <form>
-            <div className="form-group">
-              <label htmlFor="title" className="fw-bold">
-                Title
-              </label>
-              <p className="text-muted">
-                Be specific and imagine you're asking a question to another
-                person.
-              </p>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="How to center a div?"
-                id="title"
-                value={title || ""}
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-              />
-            </div>
-            <div className="mt-3">
-              <label htmlFor="editor" className="fw-bold">
-                Body
-              </label>
-              <p className="text-muted">
-                Include all the information someone would need to answer your
-                question.
-              </p>
-              <ReactQuill
-                id="ql-editor"
-                style={{
-                  background: "#fff",
-                  color: "black",
-                }}
-                theme="snow"
-                value={html}
-                placeholder="Write something..."
-                modules={AskQuestion.modules}
-                formats={AskQuestion.formats}
-                onChange={(e) => {
-                  console.log(e);
-                  setHtml(e);
-                }}
-              />
-            </div>
-            {/* <div className="my-3 form-group">
+
+          <div className="col-md-7">
+            <p className="d-md-none text-muted">
+              *Kindly refer to 'How to ask' at the bottom of the page*
+            </p>
+            <div className="bg-light border border-muted p-4">
+              <form>
+                <div className="form-group">
+                  <label htmlFor="title" className="fw-bold">
+                    Title
+                  </label>
+                  <p className="text-muted">
+                    Be specific and imagine you're asking a question to another
+                    person.
+                  </p>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="How to center a div?"
+                    id="title"
+                    value={title || ""}
+                    onChange={(e) => {
+                      setTitle(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="mt-3">
+                  <label htmlFor="editor" className="fw-bold">
+                    Body
+                  </label>
+                  <p className="text-muted">
+                    Include all the information someone would need to answer
+                    your question.
+                  </p>
+                  <ReactQuill
+                    id="ql-editor"
+                    style={{
+                      background: "#fff",
+                      color: "black",
+                    }}
+                    theme="snow"
+                    value={html}
+                    placeholder="Write something..."
+                    modules={AskQuestion.modules}
+                    formats={AskQuestion.formats}
+                    onChange={(e) => {
+                      console.log(e);
+                      setHtml(e);
+                    }}
+                  />
+                </div>
+                {/* <div className="my-3 form-group">
               <p className="fw-bold">Tags</p>
               <div className="d-flex flex-wrap">
                 <Tag
@@ -154,20 +163,20 @@ const AskQuestion = () => {
                 />
               </div>
             </div> */}
-            <button
-              type="button"
-              className="btn-burnt-umber px-3 py-2 mt-2 mx-1"
-              onClick={submit}
-            >
-              Post Question
-            </button>
-          </form>
+                <button
+                  type="button"
+                  className="btn-burnt-umber px-3 py-2 mt-2 mx-1"
+                  onClick={submit}
+                >
+                  Post Question
+                </button>
+              </form>
+            </div>
           </div>
-          
-        </div>
 
-        <div className="col-md-4 mt-2 p-5">
-          <Accordion />
+          <div className="col-md-4">
+            <Accordion />
+          </div>
         </div>
       </div>
 
