@@ -19,6 +19,8 @@ const PostResource = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
+  const allowedFiles = ["application/pdf"];
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -28,25 +30,29 @@ const PostResource = () => {
     });
   };
 
-  const handleEditor=(e)=>{
-    if(e!==null)
-        setValues({
+  const handleEditor = (e) => {
+    if (e !== null)
+      setValues({
         ...values,
-        description: e
+        description: e,
       });
-  }
+  };
 
   const handleFile = (e) => {
     if (e.target.files && e.target.files[0]) {
       let doc = e.target.files[0];
-      const reader = new FileReader();
-      reader.onload = (x) => {
-        setValues({
-          ...values,
-          file: doc,
-        });
-      };
-      reader.readAsDataURL(doc);
+      if (allowedFiles.includes(doc.type)) {
+        const reader = new FileReader();
+        reader.onload = (x) => {
+          setValues({
+            ...values,
+            file: doc,
+          });
+        };
+        reader.readAsDataURL(doc);
+      } else {
+        applyErrorClass("file");
+      }
     }
   };
 
@@ -95,7 +101,7 @@ const PostResource = () => {
         .post(`${urlRes}/Upload`, formData)
         .then((res) => {
           resetForm();
-          navigate(-1);  //change this
+          navigate(-1); //change this
         })
         .catch((err) => console.log(err));
     }
@@ -113,8 +119,7 @@ const PostResource = () => {
       </div>
 
       <div className="container my-4">
-
-      <p>
+        <p>
           <Link to="/resources" className="wibix-link">
             Resources
           </Link>{" "}
@@ -123,76 +128,86 @@ const PostResource = () => {
         </p>
 
         <div className="row">
-            <div className="col-md-4">
-                <div className="bg-light border border-muted p-4">
-                    <h5 className="fw-bold">Academic Honesty Note</h5>
-                    <hr/>
-                    <p className="px-3 py-2 bg-white li-accent">
-                        Wibix highly values academic honesty. <br/><br /> Before posting a document make sure that it's your work or you've been given the permission to share it.
-                    </p> 
-                    
-                    <h5 className="fw-bold">Stay on topic</h5>
-                    <hr/>
-                    <p className="px-3 py-2 bg-white li-accent">
-                        Post resources that are useful, like study notes, exams, quizzes, flash cards, etc. <br /><br /> Kindly refrain from sharing documents that can be considered irrelevant.
-                    </p> 
+          <div className="col-md-4">
+            <div className="bg-light border border-muted p-4">
+              <h5 className="fw-bold">Academic Honesty Note</h5>
+              <hr />
+              <p className="px-3 py-2 bg-white li-accent">
+                Wibix highly values academic honesty. <br />
+                <br /> Before posting a document make sure that it's your work
+                or you've been given the permission to share it.
+              </p>
+
+              <h5 className="fw-bold">Stay on topic</h5>
+              <hr />
+              <p className="px-3 py-2 bg-white li-accent">
+                Post resources that are useful, like study notes, exams,
+                quizzes, flash cards, etc. <br />
+                <br /> Kindly refrain from sharing documents that can be
+                considered irrelevant.
+              </p>
+            </div>
+          </div>
+          <div className="col-md-8">
+            <div className="px-5 py-3 bg-light border border-muted">
+              <form onSubmit={submit}>
+                <div className="form-group my-2">
+                  <label htmlFor="title" className="my-1 fw-bold">
+                    Title
+                  </label>
+                  <p className="text-muted">
+                    Give a descriptive title to your post
+                  </p>
+                  <input
+                    type="text"
+                    id="title"
+                    className={"form-control" + applyErrorClass("title")}
+                    name="title"
+                    placeholder="Title"
+                    value={values.title}
+                    onChange={handleInputChange}
+                  />
                 </div>
-            </div>
-            <div className="col-md-8">
-                
-        <div className="px-5 py-3 bg-light border border-muted">
-          <form onSubmit={submit}>
-            <div className="form-group my-2">
-              <label htmlFor="title" className="my-1 fw-bold">
-                Title
-              </label>
-              <p className="text-muted">Give a descriptive title to your post</p>
-              <input
-                type="text"
-                id="title"
-                className={"form-control" + applyErrorClass("title")}
-                name="title"
-                placeholder="Title"
-                value={values.title}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-group my-2">
-              <label htmlFor="course-name" className="my-1 fw-bold">
-                Course Name
-              </label>
-              <p className="text-muted">Which course is the document for? (ex. CS161)</p>
-              <input
-                type="text"
-                id="course-name"
-                className={"form-control" + applyErrorClass("courseName")}
-                name="courseName"
-                placeholder="Course Name"
-                value={values.courseName}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-group my-2">
-              <label htmlFor="school-name" className="my-1 fw-bold">
-                School Name
-              </label>
-              <p className="text-muted">What school is the course taught at?</p>
-              <input
-                type="text"
-                id="school-name"
-                className={"form-control" + applyErrorClass("school")}
-                name="school"
-                placeholder="School Name"
-                value={values.school}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-group my-2">
-              <label htmlFor="description" className="my-1 fw-bold">
-                Descripion
-              </label>
-              <p className="text-muted">What is the document about?</p>
-              {/* <textarea
+                <div className="form-group my-2">
+                  <label htmlFor="course-name" className="my-1 fw-bold">
+                    Course Name
+                  </label>
+                  <p className="text-muted">
+                    Which course is the document for? (ex. CS161)
+                  </p>
+                  <input
+                    type="text"
+                    id="course-name"
+                    className={"form-control" + applyErrorClass("courseName")}
+                    name="courseName"
+                    placeholder="Course Name"
+                    value={values.courseName}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="form-group my-2">
+                  <label htmlFor="school-name" className="my-1 fw-bold">
+                    School Name
+                  </label>
+                  <p className="text-muted">
+                    What school is the course taught at?
+                  </p>
+                  <input
+                    type="text"
+                    id="school-name"
+                    className={"form-control" + applyErrorClass("school")}
+                    name="school"
+                    placeholder="School Name"
+                    value={values.school}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="form-group my-2">
+                  <label htmlFor="description" className="my-1 fw-bold">
+                    Descripion
+                  </label>
+                  <p className="text-muted">What is the document about?</p>
+                  {/* <textarea
                 type="text"
                 id="description"
                 className={"form-control" + applyErrorClass("description")}
@@ -201,42 +216,44 @@ const PostResource = () => {
                 value={values.description}
                 onChange={handleInputChange}
               ></textarea> */}
-              <ReactQuill
-                id="ql-editor-post"
-                style={{
-                  background: "#fff",
-                  color: "black",
-                }}
-                className={applyErrorClass("description")}
-                theme="snow"
-                placeholder="Description"
-                modules={PostResource.modules}
-                formats={PostResource.formats}
-                onChange={handleEditor}
-              />
+                  <ReactQuill
+                    id="ql-editor-post"
+                    style={{
+                      background: "#fff",
+                      color: "black",
+                    }}
+                    className={applyErrorClass("description")}
+                    theme="snow"
+                    placeholder="Description"
+                    modules={PostResource.modules}
+                    formats={PostResource.formats}
+                    onChange={handleEditor}
+                  />
+                </div>
+                <div className="form-group my-2">
+                  <label htmlFor="document" className="my-1 fw-bold">
+                    Document
+                  </label>
+                  <p className="text-muted">Attach the document here</p>
+                  <input
+                    type="file"
+                    id="document"
+                    className={"form-control" + applyErrorClass("file")}
+                    name="file"
+                    placeholder="Document"
+                    onChange={handleFile}
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="btn-burnt-umber px-3 py-2 mt-3"
+                >
+                  Post Document
+                </button>
+              </form>
             </div>
-            <div className="form-group my-2">
-              <label htmlFor="document" className="my-1 fw-bold">
-                Document
-              </label>
-              <p className="text-muted">Attach the document here</p>
-              <input
-                type="file"
-                id="document"
-                className={"form-control" + applyErrorClass("file")}
-                name="file"
-                placeholder="Document"
-                onChange={handleFile}
-              />
-            </div>
-            <button type="submit" className="btn-burnt-umber px-3 py-2 mt-3">
-              Post Document
-            </button>
-          </form>
+          </div>
         </div>
-            </div>
-        </div>
-
       </div>
       <Footer />
     </>
@@ -244,19 +261,19 @@ const PostResource = () => {
 };
 
 PostResource.modules = {
-    toolbar: [
-      [{ header: [3, 4, 5, 6] }],
-      [{ size: [] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["formula"],
-      ["code-block"],
+  toolbar: [
+    [{ header: [3, 4, 5, 6] }],
+    [{ size: [] }],
+    ["bold", "italic", "underline", "strike", "blockquote"],
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
     ],
-  };
+    ["formula"],
+    ["code-block"],
+  ],
+};
 
 export default PostResource;
