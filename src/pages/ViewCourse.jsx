@@ -71,7 +71,7 @@ const ViewCourse = (props) => {
 
         <hr />
 
-        <div className="li-accent px-4 py-2">
+        <div className="li-accent px-4 py-3 bg-light">
           <h2>{course.courseName?.toUpperCase()}</h2>
           <p className="text-muted mt-3">School: {course.school?.name}</p>
           <p className="text-muted">
@@ -156,7 +156,7 @@ const ViewCourse = (props) => {
         <div className="my-4 d-flex no-wrap">
           {course.resources?.map((c, k) => {
             return (
-              <div className="me-3 bg-light border border-muted p-3 w-md-20">
+              <div className="me-3 bg-light border border-muted p-3 w-md-20" key={k}>
                 <Link
                   to={`/resources/schools/courses/resources/${c.id}`}
                   className="fw-bold wibix-link"

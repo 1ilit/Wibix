@@ -85,9 +85,9 @@ const Resources = () => {
                   <i className="fa-solid fa-xmark"></i>
                 </button>
               </div>
-              {filteredData.map((s, key) => {
+              {filteredData.map((s, i) => {
                 return (
-                  <div className="bg-white m-2 p-2 text-start">
+                  <div className="bg-white m-2 p-2 text-start" key={i}>
                     <Link
                       className="wibix-link p-2"
                       to={`/resources/schools/${s.id}`}
@@ -109,11 +109,11 @@ const Resources = () => {
         </h4>
 
         <div className="d-flex flex-wrap">
-          {schools.map((s, key) => {
+          {schools.map((s, i) => {
             return (
               <>
                 <SchoolLI
-                  key={s.id}
+                  key={i}
                   id={s.id}
                   name={s.name}
                   numberOfRes={s.numberOfRes}
