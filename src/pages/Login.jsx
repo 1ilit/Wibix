@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode'
 const Login = () => {
 
   const [user, setUser]=useState({});
+  //const [userName, setUserName]=useState("");
   
   function handleCallbackResponse(response){
     console.log("encoded jwt id token: "+response.credential);
@@ -53,11 +54,11 @@ const Login = () => {
                   <form>
                       <div className="form-group my-3">
                           <label htmlFor="username">Username</label>
-                          <input type="text" id="username" className="form-control" placeholder="username"/>
+                          <input type="text" id="username" className="form-control" placeholder="Username"/>
                       </div>
                       <div className="form-group my-3">
                           <label htmlFor="password">Password</label>
-                          <input type="password" id="password" className="form-control" placeholder="password"/>
+                          <input type="password" id="password" className="form-control" placeholder="Password"/>
                       </div>
                       <div className="d-flex justify-content-between">
                         <Link to="/" className="wibix-link fw-bold">Forgot your password?</Link>

@@ -65,12 +65,14 @@ const ViewSchool = () => {
         </p>
         <hr />
 
-        <div className="my-4 li-accent">
+        <div className="my-4 li-accent px-4 py-3 bg-light">
           <div className="ms-4">
             <h1>{school.name}</h1>
-            <p>
-              Total resources available: {school.numberOfRes} | Total Courses
-              Registered: {school.courses?.length}
+            <p className="text-muted">
+              Total resources available: {school.numberOfRes}
+            </p>
+            <p className="text-muted">
+            Total courses registered: {school.courses?.length}
             </p>
           </div>
         </div>

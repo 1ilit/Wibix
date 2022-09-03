@@ -11,11 +11,11 @@ const Footer = () => {
                 </Link>
                 <h5 className="mt-4 fw-bold">Follow Us</h5>
                 <div className="d-flex justify-content-start">
-                    <Link to="/" className="socials me-2 mt-2"><i className="h4 mt-2 ms-1 fa-brands fa-facebook-f"></i></Link>
-                    <Link to="/" className="socials mx-2 mt-2"><i className="h4 mt-2 fa-brands fa-instagram"></i></Link>
-                    <Link to="/" className="socials mx-2 mt-2"><i className="h4 mt-2 ms-1 fa-brands fa-twitter"></i></Link>
-                    <Link to="/" className="socials mx-2 mt-2"><i className="h4 mt-2 fa-brands fa-discord"></i></Link>
-                    <Link to="/" className="socials ms-2 mt-2"><i className="h4 mt-2 ms-1 fa-brands fa-linkedin-in"></i></Link>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="socials me-2 mt-2"><i className="h4 mt-2 ms-1 fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="socials mx-2 mt-2"><i className="h4 mt-2 fa-brands fa-instagram"></i></a>
+                    <a href="https://twitter.com/" target="_blank" rel="noreferrer" className="socials mx-2 mt-2"><i className="h4 mt-2 ms-1 fa-brands fa-twitter"></i></a>
+                    <a href="https://discord.com/" target="_blank" rel="noreferrer" className="socials mx-2 mt-2"><i className="h4 mt-2 fa-brands fa-discord"></i></a>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="socials ms-2 mt-2"><i className="h4 mt-2 ms-1 fa-brands fa-linkedin-in"></i></a>
                 </div>
 
             </div>
