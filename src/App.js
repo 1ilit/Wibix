@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -17,8 +17,19 @@ import CourseNotFound from './pages/CourseNotFound';
 import PostResource from './pages/PostResource';
 import ViewResource from './pages/ViewResource';
 import ResNotFound from './pages/ResNotFound'
-function App() {
-  return (
+// import axios from "axios"
+// import {urlAccount} from "./endpoints"
+const App =()=>{
+
+  const [data, setData]=useState({});
+  useEffect(()=>{
+    var vals=localStorage.getItem('token');
+    setData(JSON.parse(vals));
+    console.log(data);
+  }, [data])
+    
+
+    return (
     <>
       <Router>
         <Routes>
@@ -30,7 +41,7 @@ function App() {
           <Route path="/about" element={<About/>}/>
           <Route path="forum/:postId" element={<ViewPost/>}/>
           <Route path="/askQuestion" element={<AskQuestion/>}/>
-          <Route path="/faq" element={<FAQs/>}/>
+          <Route path="/faq" element={<FAQs data={data}/>}/>
           <Route path="/resources/schools/:schoolId" element={<ViewSchool/>}/>
           <Route path="/schoolNotFound" element={<SchoolNotFound/>}/>
           <Route path="/resources/schools/courses/:courseId" element={<ViewCourse/>}/>
@@ -41,7 +52,8 @@ function App() {
         </Routes>
       </Router>
     </>
-  );
+    );
+  
 }
 
 export default App;

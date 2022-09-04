@@ -102,7 +102,7 @@ const Forum = () => {
                     <FancyLI number="5" text="Be descriptive and precise"/>
                 </div>
                 <div className="bg-light border border-muted p-3 my-4">
-                    <h5>Moderators</h5>
+                    <h5>Users</h5>
                     <hr />
                 </div>
             </div>

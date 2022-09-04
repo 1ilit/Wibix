@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-class Navbar extends Component {
-  state = { clicked: false };
-  handleMenu = () => {
-    this.setState({ clicked: !this.state.clicked });
+const Navbar =(props)=> {
+  const [state, setState]=useState(false);
+
+  const handleMenu = () => {
+    setState(!state);
   };
 
-  render() {
     return (
       <div id="le-navbar">
         <nav
           className={
-            !this.state.clicked
+            !state
               ? "navbar navbar-expand-lg d-flex justify-content-between"
               : "navbar navbar-expand-lg d-flex justify-content-between bg-white"
           }
@@ -24,40 +24,40 @@ class Navbar extends Component {
           <div className="d-md-none">
             <i
               className={
-                this.state.clicked
+                state
                   ? "fa fa-times h2 me-5 mt-2"
                   : "fa fa-bars h2 me-5 mt-2"
               }
-              onClick={this.handleMenu}
+              onClick={handleMenu}
             ></i>
             <ul
               className={
-                this.state.clicked
+                state
                   ? "active text-center p-0 navbar-nav"
                   : "non-active text-center d-none p-0 navbar-nav"
               }
             >
-              <li className="nav-item fw-bold mx-2" onClick={this.handleMenu}>
+              <li className="nav-item fw-bold mx-2" onClick={handleMenu}>
                 <Link to="/" className="nav-link">
                   Home
                 </Link>
               </li>
-              <li className="nav-item fw-bold mx-2" onClick={this.handleMenu}>
+              <li className="nav-item fw-bold mx-2" onClick={handleMenu}>
                 <Link to="/resources" className="nav-link">
                   Resources
                 </Link>
               </li>
-              <li className="nav-item fw-bold mx-2" onClick={this.handleMenu}>
+              <li className="nav-item fw-bold mx-2" onClick={handleMenu}>
                 <Link to="/forum" className="nav-link">
                   Forum
                 </Link>
               </li>
-              <li className="nav-item fw-bold mx-2" onClick={this.handleMenu}>
+              <li className="nav-item fw-bold mx-2" onClick={handleMenu}>
                 <Link to="/about" className="nav-link">
                   About
                 </Link>
               </li>
-              <li className="nav-item fw-bold mx-2" onClick={this.handleMenu}>
+              <li className="nav-item fw-bold mx-2" onClick={handleMenu}>
                 <Link
                   to="/signup"
                   className="btn-burnt-umber m-2 px-3 nav-link"
@@ -104,6 +104,6 @@ class Navbar extends Component {
       </div>
     );
   }
-}
+
 
 export default Navbar;

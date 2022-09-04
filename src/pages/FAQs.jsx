@@ -1,11 +1,18 @@
 import React from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-const FAQs = () => {
+const FAQs = (props) => {
   return (
     <>
       <Navbar />
-        faqs
+        {props.data &&
+        
+        <h1>hi {props.data.user?.userName}</h1>
+        
+        }
+        {
+          !props.data && <h1>Faqs</h1>
+        }
       <Footer />
     </>
   );

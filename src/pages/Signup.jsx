@@ -45,7 +45,6 @@ const Signup = () => {
           );
           navigate("/login");
           resetForm();
-          //change this
         })
         .catch((err) => console.log(err));
     }
