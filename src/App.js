@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -20,42 +20,47 @@ import ResNotFound from './pages/ResNotFound'
 import Profile from './pages/Profile';
 // import axios from "axios"
 // import {urlAccount} from "./endpoints"
-const App =()=>{
+class App extends Component{
 
-  const [data, setData]=useState({});
-  useEffect(()=>{
+  state={}
+  // useEffect(()=>{
+  //   var vals=localStorage.getItem('token');
+  //   setData(JSON.parse(vals));
+  //   console.log(data);
+  // }, [])
+  componentDidMount(){
     var vals=localStorage.getItem('token');
-    setData(JSON.parse(vals));
-    console.log(data);
-  }, [data])
+    this.setState({data: JSON.parse(vals)});
+    console.log(this.state.data);
+  }
     
-
+render(){
     return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home data={data}/>}/>
+          <Route path="/" element={<Home data={this.state.data}/>}/>
           <Route path="/login" element={<Login/>}/>
-          <Route path="/resources" element={<Resources data={data}/>}/>
+          <Route path="/resources" element={<Resources data={this.state.data}/>}/>
           <Route path="/signup" element={<Signup/>}/>
-          <Route path="/forum" element={<Forum data={data}/>}/>
-          <Route path="/about" element={<About data={data}/>}/>
-          <Route path="forum/:postId" element={<ViewPost data={data}/>}/>
-          <Route path="/askQuestion" element={<AskQuestion data={data}/>}/>
-          <Route path="/faq" element={<FAQs data={data}/>}/>
-          <Route path="/resources/schools/:schoolId" element={<ViewSchool data={data}/>}/>
-          <Route path="/schoolNotFound" element={<SchoolNotFound data={data}/>}/>
-          <Route path="/resources/schools/courses/:courseId" element={<ViewCourse data={data}/>}/>
-          <Route path="/courseNotFound" element={<CourseNotFound data={data}/>}/>
-          <Route path="/postRes" element={<PostResource data={data}/>}/>
-          <Route path="/resources/schools/courses/resources/:resourceId" element={<ViewResource data={data}/>}/>
-          <Route path="/resNotFound" element={<ResNotFound data={data}/>}/>
-          <Route path="/profile" element={<Profile data={data}/>}/>
+          <Route path="/forum" element={<Forum data={this.state.data}/>}/>
+          <Route path="/about" element={<About data={this.state.data}/>}/>
+          <Route path="forum/:postId" element={<ViewPost data={this.state.data}/>}/>
+          <Route path="/askQuestion" element={<AskQuestion data={this.state.data}/>}/>
+          <Route path="/faq" element={<FAQs data={this.state.data}/>}/>
+          <Route path="/resources/schools/:schoolId" element={<ViewSchool data={this.state.data}/>}/>
+          <Route path="/schoolNotFound" element={<SchoolNotFound data={this.state.data}/>}/>
+          <Route path="/resources/schools/courses/:courseId" element={<ViewCourse data={this.state.data}/>}/>
+          <Route path="/courseNotFound" element={<CourseNotFound data={this.state.data}/>}/>
+          <Route path="/postRes" element={<PostResource data={this.state.data}/>}/>
+          <Route path="/resources/schools/courses/resources/:resourceId" element={<ViewResource data={this.state.data}/>}/>
+          <Route path="/resNotFound" element={<ResNotFound data={this.state.data}/>}/>
+          <Route path="/profile" element={<Profile data={this.state.data}/>}/>
         </Routes>
       </Router>
     </>
     );
-  
+    }
 }
 
 export default App;

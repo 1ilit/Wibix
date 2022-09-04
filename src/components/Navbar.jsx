@@ -16,7 +16,7 @@ const Navbar = (props) => {
     if (url.slice(url.length - 7, url.length) === "profile") {
       navigate("/signup");
     }
-    e.reload();
+    else{e.reload();}
   };
 
   return (

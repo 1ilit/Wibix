@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Moment from "react-moment";
 import { urlForum } from "../endpoints";
@@ -14,6 +14,8 @@ import "react-quill/dist/quill.snow.css";
 window.katex = katex;
 const ViewPost = (props) => {
   const { postId } = useParams();
+
+  const navigate = useNavigate();
 
   const [post, setPost] = useState([]);
   const [html, setHtml] = useState([]);
@@ -30,12 +32,25 @@ const ViewPost = (props) => {
   }, [postId]);
 
   const submit = async (e) => {
-    var response = await axios.post(`${urlForum}/AddAnswer`, {
-      body: html,
-      postId: postId,
-    });
-    console.log(response);
-    window.location.reload(false);
+    if (props.data != null) {
+      const config = {
+        headers: {
+          Authorization: "Bearer " + props.data.token,
+        },
+      };
+      await axios
+        .post(`${urlForum}/AddAnswer`,{
+          body: html,
+          postId: postId,
+        }, config)
+        .then((response) => {
+          console.log(response);
+          window.location.reload(false);
+        })
+        .catch((err) => console.log("error"));
+    } else {
+      navigate("/login");
+    }
   };
 
   const upvotePost = async (e) => {
@@ -45,8 +60,7 @@ const ViewPost = (props) => {
     if (!upP && !downP) {
       pseudoR++;
       response = await axios.post(`${urlForum}/UpvotePost/${postId}`);
-    }
-    else {
+    } else {
       response = await axios.post(`${urlForum}/DownvotePost/${postId}`);
     }
 
@@ -60,8 +74,7 @@ const ViewPost = (props) => {
     var response;
     if (downP && !upP) {
       response = await axios.post(`${urlForum}/UpvotePost/${postId}`);
-    }
-    else {
+    } else {
       pseudoR--;
       response = await axios.post(`${urlForum}/DownvotePost/${postId}`);
     }
@@ -72,10 +85,16 @@ const ViewPost = (props) => {
 
   return (
     <>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} />
       <div className="container my-3">
-      <p><Link to="/forum" className="wibix-link">Forum</Link> <i className="fa-solid fa-angles-right mx-2"></i>{post.heading}</p>
-      <hr />
+        <p>
+          <Link to="/forum" className="wibix-link">
+            Forum
+          </Link>{" "}
+          <i className="fa-solid fa-angles-right mx-2"></i>
+          {post.heading}
+        </p>
+        <hr />
         <h2 className="ms-4">{post.heading}</h2>
         <p className="ms-4 text-muted">
           Posted on <Moment format="llll">{post.date}</Moment>
@@ -123,11 +142,11 @@ const ViewPost = (props) => {
             )}
 
             <ul>
-              {post.answers?.map((a) => {
+              {post.answers?.map((a, i) => {
                 return (
                   <div>
                     <Answer
-                      key={a.id}
+                      key={i}
                       body={a.body}
                       rating={a.rating}
                       date={a.date}
