@@ -5,7 +5,7 @@ import { urlRes } from "../endpoints";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const ViewSchool = () => {
+const ViewSchool = (props) => {
   const { schoolId } = useParams();
   const [school, setSchool] = useState([]);
   // const [courses, setCourses] = useState([]);
@@ -54,7 +54,7 @@ const ViewSchool = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar data={props.data}/>
       <div className="container">
         <p>
           <Link to="/resources" className="wibix-link">

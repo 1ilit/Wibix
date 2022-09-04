@@ -14,7 +14,7 @@ const initialValues = {
   file: null,
 };
 
-const PostResource = () => {
+const PostResource = (props) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
@@ -109,7 +109,7 @@ const PostResource = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar data={props.data}/>
       <div className="ask-header">
         <div id="ask-image"></div>
         <div className="layer p-0 m-0"></div>

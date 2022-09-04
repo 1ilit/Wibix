@@ -5,7 +5,7 @@ import AboutBanner from "../components/AboutBanner";
 import emailjs from "emailjs-com";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-const About = () => {
+const About = (props) => {
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -33,7 +33,7 @@ const About = () => {
   };
   return (
     <div>
-      <Navbar />
+      <Navbar data={props.data}/>
 
       <AboutBanner />
       <div className="container">

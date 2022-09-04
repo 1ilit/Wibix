@@ -2,10 +2,10 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import HomeBanner from '../components/HomeBanner'
 import Footer from '../components/Footer'
-const Home = () => {
+const Home = (props) => {
   return (
     <>
-      <Navbar/>
+      <Navbar data={props.data}/>
       <HomeBanner/>
       <Footer/>
     </>

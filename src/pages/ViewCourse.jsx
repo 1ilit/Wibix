@@ -52,7 +52,7 @@ const ViewCourse = (props) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar data={props.data}/>
       <div className="container">
         <p>
           <Link to="/resources" className="wibix-link">

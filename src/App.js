@@ -17,6 +17,7 @@ import CourseNotFound from './pages/CourseNotFound';
 import PostResource from './pages/PostResource';
 import ViewResource from './pages/ViewResource';
 import ResNotFound from './pages/ResNotFound'
+import Profile from './pages/Profile';
 // import axios from "axios"
 // import {urlAccount} from "./endpoints"
 const App =()=>{
@@ -33,22 +34,23 @@ const App =()=>{
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<Home data={data}/>}/>
           <Route path="/login" element={<Login/>}/>
-          <Route path="/resources" element={<Resources/>}/>
+          <Route path="/resources" element={<Resources data={data}/>}/>
           <Route path="/signup" element={<Signup/>}/>
-          <Route path="/forum" element={<Forum/>}/>
-          <Route path="/about" element={<About/>}/>
-          <Route path="forum/:postId" element={<ViewPost/>}/>
-          <Route path="/askQuestion" element={<AskQuestion/>}/>
+          <Route path="/forum" element={<Forum data={data}/>}/>
+          <Route path="/about" element={<About data={data}/>}/>
+          <Route path="forum/:postId" element={<ViewPost data={data}/>}/>
+          <Route path="/askQuestion" element={<AskQuestion data={data}/>}/>
           <Route path="/faq" element={<FAQs data={data}/>}/>
-          <Route path="/resources/schools/:schoolId" element={<ViewSchool/>}/>
-          <Route path="/schoolNotFound" element={<SchoolNotFound/>}/>
-          <Route path="/resources/schools/courses/:courseId" element={<ViewCourse/>}/>
-          <Route path="/courseNotFound" element={<CourseNotFound/>}/>
-          <Route path="/postRes" element={<PostResource/>}/>
-          <Route path="/resources/schools/courses/resources/:resourceId" element={<ViewResource/>}/>
-          <Route path="/resNotFound" element={<ResNotFound/>}/>
+          <Route path="/resources/schools/:schoolId" element={<ViewSchool data={data}/>}/>
+          <Route path="/schoolNotFound" element={<SchoolNotFound data={data}/>}/>
+          <Route path="/resources/schools/courses/:courseId" element={<ViewCourse data={data}/>}/>
+          <Route path="/courseNotFound" element={<CourseNotFound data={data}/>}/>
+          <Route path="/postRes" element={<PostResource data={data}/>}/>
+          <Route path="/resources/schools/courses/resources/:resourceId" element={<ViewResource data={data}/>}/>
+          <Route path="/resNotFound" element={<ResNotFound data={data}/>}/>
+          <Route path="/profile" element={<Profile data={data}/>}/>
         </Routes>
       </Router>
     </>

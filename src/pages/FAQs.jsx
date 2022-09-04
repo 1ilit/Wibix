@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 const FAQs = (props) => {
   return (
     <>
-      <Navbar />
+      <Navbar data={props.data}/>
         {props.data &&
         
         <h1>hi {props.data.user?.userName}</h1>

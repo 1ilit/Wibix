@@ -10,6 +10,7 @@ const initialValues = {
   username: "",
   password: "",
 };
+
 const Login = () => {
   const [user, setUser] = useState({});
   const [values, setValues] = useState(initialValues);
@@ -39,16 +40,24 @@ const Login = () => {
         })
         .then((res) => {
           console.log(res.data);
-          localStorage.setItem('token', JSON.stringify({
-            //login: true,
-            token: res.data.token,
-            user: res.data.user,
-          }))
+          localStorage.setItem(
+            "token",
+            JSON.stringify({
+              //login: true,
+              token: res.data.token,
+              user: res.data.user,
+            })
+          );
           //setLogin(true);
           navigate(-2);
+          e.reload();
           resetForm();
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          applyErrorClass("password");
+          applyErrorClass("username");
+        });
     }
   };
 

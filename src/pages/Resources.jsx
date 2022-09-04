@@ -6,7 +6,7 @@ import ResBanner from "../components/ResBanner";
 import axios from "axios";
 import { urlRes } from "../endpoints";
 import SchoolLI from "../components/SchoolLI";
-const Resources = () => {
+const Resources = (props) => {
   const [schools, setSchools] = useState([]);
   const [searchStr, setSearchStr] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -48,7 +48,7 @@ const Resources = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar data={props.data}/>
       <ResBanner />
       <div className="container text-center my-5">
         <h1 className="fw-bold">Find resources by school</h1>

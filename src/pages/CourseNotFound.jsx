@@ -3,12 +3,12 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Link , useNavigate} from "react-router-dom";
 
-const CourseNotFound = () => {
+const CourseNotFound = (props) => {
 
     const history=useNavigate();
   return (
     <>
-      <Navbar />
+      <Navbar data={props.data}/>
 
       <div className="container mb-5">
         <p>

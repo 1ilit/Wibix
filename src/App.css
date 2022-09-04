@@ -359,6 +359,10 @@ button{
 
 }
 
+#profile-icon{
+  border-radius: 50%;
+}
+
 
 @media screen and (max-width: 960px) {
   .home-banner h1 {

@@ -12,7 +12,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 window.katex = katex;
-const ViewPost = () => {
+const ViewPost = (props) => {
   const { postId } = useParams();
 
   const [post, setPost] = useState([]);
@@ -72,7 +72,7 @@ const ViewPost = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar data={props.data}/>
       <div className="container my-3">
       <p><Link to="/forum" className="wibix-link">Forum</Link> <i className="fa-solid fa-angles-right mx-2"></i>{post.heading}</p>
       <hr />

@@ -14,7 +14,7 @@ import { useState } from "react";
 
 window.katex = katex;
 
-const AskQuestion = () => {
+const AskQuestion = (props) => {
   // const [math, setMath] = useState(false);
   // const [advMath, setAdvMath] = useState(false);
   // const [bio, setBio] = useState(false);
@@ -49,7 +49,7 @@ const AskQuestion = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar data={props.data}/>
       <div className="ask-header">
         <div id="ask-image"></div>
         <div className="layer p-0 m-0"></div>

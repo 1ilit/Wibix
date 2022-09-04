@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { urlForum } from "../endpoints";
 import FancyLI from "../components/FancyLI";
 
-const Forum = () => {
+const Forum = (props) => {
   const [posts, setPosts] = useState([]);
   const [mode, setMode] = useState("recent");
 
@@ -37,7 +37,7 @@ const Forum = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar data={props.data}/>
       <div className="ask-header mb-3">
         <div id="ask-image"></div>
         <div className="layer p-0 m-0"></div>
@@ -83,7 +83,7 @@ const Forum = () => {
             </button>
           </div>
           <Link
-            to="/askQuestion"
+            to={props.data? "/askQuestion": "/login"}
             className="ms-3 ms-md-5 h6 modes px-3 py-2 col-md-2 w-auto ask-btn"
           >
             Ask a question
