@@ -7,7 +7,7 @@ import faqs from "../faqs";
 const FAQs = (props) => {
   return (
     <>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} />
       <div className="ask-header mb-3">
         <div id="ask-image"></div>
         <div className="layer p-0 m-0"></div>
@@ -17,17 +17,24 @@ const FAQs = (props) => {
       </div>
 
       <div className="container mb-5">
+        <p className="mt-5 mb-4">
+          If you do not find the answer to your questions here, please{" "}
+          <Link to="/about" className="wibix-link fw-bold">
+            contact us
+          </Link>
+          .
+        </p>
 
-        <p className="mt-5 mb-4">If you do not find the answer to your questions here, please <Link to="/about" className="wibix-link">contact us</Link>.</p>
-
-        {
-          faqs.map((v, i)=>{
-            return(
-              <FAQLi key={i} question={v.question} answer={v.answer} num={v.num}/>
-            )
-          })
-        }
-        
+        {faqs.map((v, i) => {
+          return (
+            <FAQLi
+              key={i}
+              question={v.question}
+              answer={v.answer}
+              num={v.num}
+            />
+          );
+        })}
       </div>
       <Footer />
     </>

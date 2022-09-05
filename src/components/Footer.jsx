@@ -33,8 +33,8 @@ const Footer = () => {
             </div>
             <div className="col-md-2 ms-5 mt-3">
                 <h6 className="fw-bold mb-3">Legal</h6>
-                <p><Link className="footer-link" to="/privacy">Privacy Policy</Link></p>
-                <p><Link className="footer-link" to="/terms">Terms and Conditions</Link></p>
+                <p><Link className="footer-link" to="/privacyPolicy">Privacy Policy</Link></p>
+                <p><Link className="footer-link" to="/termsAndConditions">Terms and Conditions</Link></p>
             </div>
             <hr className="my-3"/>
             <p className="text-center">&copy; 2022 <strong>wibix</strong>. All Rights Reserved. - daywa1kr</p>

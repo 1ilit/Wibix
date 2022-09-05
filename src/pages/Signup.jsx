@@ -212,11 +212,11 @@ const Signup = () => {
                 {user && <div>{user.email}</div>}
                 <p className="text-start">
                   By continuing, you agree to our{" "}
-                  <Link to="/" className="wibix-link fw-bold">
+                  <Link to="/termsAndConditions" className="wibix-link fw-bold">
                     Terms and Conditions
                   </Link>{" "}
                   and{" "}
-                  <Link to="/" className="wibix-link fw-bold">
+                  <Link to="/privacyPolicy" className="wibix-link fw-bold">
                     Privacy Policy
                   </Link>
                   .

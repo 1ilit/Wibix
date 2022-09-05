@@ -18,16 +18,13 @@ import PostResource from './pages/PostResource';
 import ViewResource from './pages/ViewResource';
 import ResNotFound from './pages/ResNotFound'
 import Profile from './pages/Profile';
-// import axios from "axios"
-// import {urlAccount} from "./endpoints"
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms';
+
 class App extends Component{
 
   state={}
-  // useEffect(()=>{
-  //   var vals=localStorage.getItem('token');
-  //   setData(JSON.parse(vals));
-  //   console.log(data);
-  // }, [])
+
   componentDidMount(){
     var vals=localStorage.getItem('token');
     this.setState({data: JSON.parse(vals)});
@@ -56,6 +53,8 @@ render(){
           <Route path="/resources/schools/courses/resources/:resourceId" element={<ViewResource data={this.state.data}/>}/>
           <Route path="/resNotFound" element={<ResNotFound data={this.state.data}/>}/>
           <Route path="/profile" element={<Profile data={this.state.data}/>}/>
+          <Route path="/privacyPolicy" element={<PrivacyPolicy data={this.state.data}/>}/>
+          <Route path="/termsAndConditions" element={<Terms data={this.state.data}/>}/>
         </Routes>
       </Router>
     </>
