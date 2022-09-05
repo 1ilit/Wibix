@@ -32,10 +32,10 @@ const Navbar = (props) => {
           <i className="fa-brands fa-hubspot h2"></i>
           <span className="h2 mx-2 fw-bold">wibix</span>
         </Link>
-        <div className="d-md-none">
+        <div className={props.color==="white"?"d-md-none text-white":"d-md-none"}>
           <i
             className={
-              state ? "fa fa-times h2 me-5 mt-2" : "fa fa-bars h2 me-5 mt-2"
+              state ? "fa fa-times h2 me-5 mt-2 text-dark" : "fa fa-bars h2 me-5 mt-2"
             }
             onClick={handleMenu}
           ></i>
@@ -93,22 +93,22 @@ const Navbar = (props) => {
         <ul className="navbar-nav d-none d-md-flex justify-content-between mt-2">
           <div className="d-flex justify-content-between">
             <li className="nav-item fw-bold mx-2">
-              <Link to="/" className="nav-link">
+              <Link to="/" className={props.color==="white"?"nav-link text-white": "nav-link"}>
                 Home
               </Link>
             </li>
             <li className="nav-item fw-bold mx-2">
-              <Link to="/resources" className="nav-link">
+              <Link to="/resources" className={props.color==="white"?"nav-link text-white": "nav-link"}>
                 Resources
               </Link>
             </li>
             <li className="nav-item fw-bold mx-2">
-              <Link to="/forum" className="nav-link">
+              <Link to="/forum" className={props.color==="white"?"nav-link text-white": "nav-link"}>
                 Forum
               </Link>
             </li>
             <li className="nav-item fw-bold mx-2">
-              <Link to="/about" className="nav-link">
+              <Link to="/about" className={props.color==="white"?"nav-link text-white": "nav-link"}>
                 About
               </Link>
             </li>

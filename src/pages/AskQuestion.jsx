@@ -38,10 +38,15 @@ const AskQuestion = (props) => {
 
   const submit = async (e) => {
     e.preventDefault();
+    const config = {
+      headers: {
+        Authorization: "Bearer " + props.data.token,
+      },
+    };
     var response = await axios.post(`${urlForum}/AddPost`, {
       heading: title,
       body: html,
-    });
+    }, config);
     console.log(response);
     delay(2000);
     navigate("/forum");
@@ -58,7 +63,7 @@ const AskQuestion = (props) => {
         </h2>
       </div>
 
-      <div className="container">
+      <div className="container mb-5">
         <div className="row m-0">
           <p className="mt-4 ms-2">
             <Link to="/forum" className="wibix-link">

@@ -33,7 +33,7 @@ const About = (props) => {
   };
   return (
     <div>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} color="white"/>
 
       <AboutBanner />
       <div className="container">

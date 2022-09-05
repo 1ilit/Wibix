@@ -48,7 +48,7 @@ const Resources = (props) => {
 
   return (
     <div>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} color="white"/>
       <ResBanner />
       <div className="container text-center my-5">
         <h1 className="fw-bold">Find resources by school</h1>

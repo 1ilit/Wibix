@@ -6,7 +6,16 @@ const Profile = (props) => {
   return (
     <>
       <Navbar data={props.data}/>
-      <div>Dashboard ubidayyy</div>
+      <div className="container">
+          <div className="row">
+            <div className="col-md-4">
+
+            </div>
+            <div className="col-md-8">
+              
+            </div>
+          </div>
+        </div>
       <Footer/>
     </>
     

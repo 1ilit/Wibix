@@ -93,6 +93,23 @@ const Signup = () => {
     });
   }, []);
 
+  const showPassword = () => {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  };
+  const showCPassword = () => {
+    var x = document.getElementById("cpassword");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  };
+
   return (
     <>
       <div className="container-fluid">
@@ -140,27 +157,45 @@ const Signup = () => {
                 </div>
                 <div className="form-group my-3">
                   <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    className={"form-control" + applyErrorClass("password")}
-                    name="password"
-                    value={values.password}
-                    onChange={handleInputChange}
-                  />
+                  <div className="input-group">
+                    <input
+                      type="password"
+                      id="password"
+                      placeholder="Password"
+                      className={"form-control" + applyErrorClass("password")}
+                      name="password"
+                      value={values.password}
+                      onChange={handleInputChange}
+                    />
+                    <div class="input-group-append">
+                      <div className="input-group-text input-tail">
+                        <button type="button" onClick={showPassword}>
+                          <i className="fa-solid fa-eye wibix-link"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="form-group my-3">
                   <label htmlFor="cpassword">Confirm Password</label>
-                  <input
-                    type="password"
-                    id="cpassword"
-                    placeholder="Confirm password"
-                    className={"form-control" + applyErrorClass("cpassword")}
-                    name="cpassword"
-                    value={values.cpassword}
-                    onChange={handleInputChange}
-                  />
+                  <div className="input-group">
+                    <input
+                      type="password"
+                      id="cpassword"
+                      placeholder="Confirm password"
+                      className={"form-control" + applyErrorClass("cpassword")}
+                      name="cpassword"
+                      value={values.cpassword}
+                      onChange={handleInputChange}
+                    />
+                    <div class="input-group-append">
+                      <div className="input-group-text input-tail">
+                        <button type="button" onClick={showCPassword}>
+                          <i className="fa-solid fa-eye wibix-link"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="d-flex justify-content-between">
                   <Link to="/login" className="wibix-link fw-bold">

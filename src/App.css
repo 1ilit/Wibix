@@ -41,6 +41,10 @@
   font-size: 18px;
 }
 
+.nav-link:hover{
+  text-decoration: underline;
+}
+
 .active {
   background-color: #fff;
   display: table !important;
@@ -347,6 +351,7 @@
 
 button{
   border: 0px solid #000;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .invalid-field{
@@ -361,6 +366,11 @@ button{
 
 #profile-icon{
   border-radius: 50%;
+}
+
+.input-tail{
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
 

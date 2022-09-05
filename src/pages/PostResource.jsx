@@ -97,8 +97,14 @@ const PostResource = (props) => {
       formData.append("school", values.school);
       formData.append("file", values.file);
 
+      const config = {
+        headers: {
+          Authorization: "Bearer " + props.data.token,
+        },
+      };
+
       await axios
-        .post(`${urlRes}/Upload`, formData)
+        .post(`${urlRes}/Upload`, formData, config)
         .then((res) => {
           resetForm();
           navigate(-1); //change this

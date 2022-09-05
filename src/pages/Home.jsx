@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 const Home = (props) => {
   return (
     <>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} color="white"/>
       <HomeBanner/>
       <Footer/>
     </>

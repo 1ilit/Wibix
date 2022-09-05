@@ -5,14 +5,7 @@ const FAQs = (props) => {
   return (
     <>
       <Navbar data={props.data}/>
-        {props.data &&
         
-        <h1>hi {props.data.user?.userName}</h1>
-        
-        }
-        {
-          !props.data && <h1>Faqs</h1>
-        }
       <Footer />
     </>
   );

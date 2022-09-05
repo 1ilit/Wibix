@@ -19,6 +19,7 @@ const Login = () => {
   //const [store, setStore]=useState(null);
 
   const navigate = useNavigate();
+  //const { state } = useLocation();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -99,6 +100,15 @@ const Login = () => {
     });
   }, []);
 
+  const showPassword = () => {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  };
+
   return (
     <>
       <div className="container-fluid">
@@ -134,15 +144,24 @@ const Login = () => {
                 </div>
                 <div className="form-group my-3">
                   <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    className={"form-control" + applyErrorClass("password")}
-                    name="password"
-                    value={values.password}
-                    onChange={handleInputChange}
-                  />
+                  <div className="input-group">
+                    <input
+                      type="password"
+                      id="password"
+                      placeholder="Password"
+                      className={"form-control" + applyErrorClass("password")}
+                      name="password"
+                      value={values.password}
+                      onChange={handleInputChange}
+                    />
+                    <div class="input-group-append">
+                      <div className="input-group-text input-tail">
+                        <button type="button" onClick={showPassword}>
+                          <i className="fa-solid fa-eye wibix-link"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="d-flex justify-content-between">
                   <Link to="/" className="wibix-link fw-bold">

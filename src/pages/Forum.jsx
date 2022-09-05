@@ -28,6 +28,7 @@ const Forum = (props) => {
           path = "Recent";
           break;
       }
+      
       const response = await axios.get(`${urlForum}/${path}`);
       console.log(response);
       setPosts(response.data);
