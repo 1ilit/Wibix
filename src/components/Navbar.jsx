@@ -125,14 +125,14 @@ const Navbar = (props) => {
         )}
         {props.data && (
           <div className="d-flex d-none d-md-flex me-5">
-            <Link
-              to="#"
+            <button
+              type="button"
               onClick={logout}
               className="btn-burnt-umber px-4 py-2 mt-2 me-3"
               id="logout"
             >
               Logout
-            </Link>
+            </button>
             <Link
               to="/profile"
               className="btn-burnt-umber px-3 pt-2 mt-2"

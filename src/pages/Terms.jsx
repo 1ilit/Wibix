@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 const Terms = (props) => {
   return (
     <>
-      <Navbar />
+      <Navbar data={props.data}/>
       <div className="ask-header mb-3">
         <div id="ask-image"></div>
         <div className="layer p-0 m-0"></div>
