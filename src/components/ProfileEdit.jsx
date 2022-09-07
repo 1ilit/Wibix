@@ -6,6 +6,7 @@ import axios from "axios";
 const ProfileEdit = (props) => {
   const [bio, setBio] = useState(props.data?.user.bio);
   const [email, setEmail] = useState(props.data?.user.email);
+  const [displayName, setDisplayName] = useState(props.data?.user.userName);
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -31,12 +32,12 @@ const ProfileEdit = (props) => {
     }
   };
 
-  const validate = () => {
-    let temp = {};
-    temp.file = values.file === null ? false : true;
-    setErrors(temp);
-    return Object.values(temp).every((x) => x === true);
-  };
+  // const validate = () => {
+  //   let temp = {};
+  //   temp.file = values.file === null ? false : true;
+  //   setErrors(temp);
+  //   return Object.values(temp).every((x) => x === true);
+  // };
 
   const applyErrorClass = (field) =>
     field in errors && errors[field] === false ? " invalid-field" : "";
@@ -55,6 +56,7 @@ const ProfileEdit = (props) => {
     formData.append("file", values.file);
     formData.append("bio", bio);
     formData.append("email", email);
+    formData.append("displayName", displayName);
 
     const config = {
       headers: {
@@ -66,6 +68,7 @@ const ProfileEdit = (props) => {
       .post(`${urlAccount}/UpdateProfile`, formData, config)
       .then((res) => {
         resetForm();
+        alert("Your information has been successfully update. \n The changes will be displayed soon.")
         navigate(0);
       })
       .catch((err) => console.log(err));
@@ -89,6 +92,17 @@ const ProfileEdit = (props) => {
                 name="file"
                 placeholder="Document"
                 onChange={handleFile}
+              />
+            </div>
+
+            <div className="form-group my-3">
+              <label className="text-muted text-start">Update your display name</label>
+              <input
+                name="name"
+                id="name"
+                className={"form-control" + applyErrorClass("name")}
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
               />
             </div>
 

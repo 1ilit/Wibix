@@ -11,7 +11,6 @@ const Profile = (props) => {
   const [component, setComponent] = useState(<ProfileMain data={props.data}/>);
   
   useEffect(() => {
-    
       switch (section) {
         case "profile":
           setComponent(<ProfileMain data={props.data}/>)

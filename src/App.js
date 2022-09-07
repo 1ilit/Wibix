@@ -20,6 +20,7 @@ import ResNotFound from './pages/ResNotFound'
 import Profile from './pages/Profile';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
+import ViewUsers from './pages/ViewUsers';
 
 class App extends Component{
 
@@ -31,7 +32,7 @@ class App extends Component{
     console.log(this.state.data);
   }
     
-render(){
+  render(){
     return (
     <>
       <Router>
@@ -55,11 +56,12 @@ render(){
           <Route path="/profile" element={<Profile data={this.state.data}/>}/>
           <Route path="/privacyPolicy" element={<PrivacyPolicy data={this.state.data}/>}/>
           <Route path="/termsAndConditions" element={<Terms data={this.state.data}/>}/>
+          <Route path="/viewUsers" element={<ViewUsers data={this.state.data}/>}/>
         </Routes>
       </Router>
     </>
     );
-    }
+  }
 }
 
 export default App;

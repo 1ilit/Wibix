@@ -17,10 +17,10 @@ const ProfileMain = (props) => {
             height="300"
             className="border rounded-circle"
           />
-
-          <h3 className="my-4 fw-bold">@{props.data?.user.userName}</h3>
+          <h3 className="my-4 fw-bold">{props.data?.user.displayName}</h3>
+          <h5 className="my-4 fw-bold text-muted">@{props.data?.user.userName}</h5>
           <p className="h5 mb-4 w-md-50">{props.data?.user.bio}</p>
-          <p className="">{props.data?.user.email} <span className="text-muted">(this is not visible to others)</span></p>
+          <p>{props.data?.user.email} <span className="text-muted">(this is not visible to others)</span></p>
         </div>
       </div>
     </>

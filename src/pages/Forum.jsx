@@ -4,11 +4,13 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post";
 import { Link } from "react-router-dom";
-import { urlForum } from "../endpoints";
+import { urlAccount, urlForum } from "../endpoints";
 import FancyLI from "../components/FancyLI";
+import UserLi from "../components/UserLi";
 
 const Forum = (props) => {
   const [posts, setPosts] = useState([]);
+  const [users, setUsers] = useState([]);
   const [mode, setMode] = useState("recent");
 
   useEffect(() => {
@@ -28,17 +30,22 @@ const Forum = (props) => {
           path = "Recent";
           break;
       }
-      
+
       const response = await axios.get(`${urlForum}/${path}`);
       console.log(response);
       setPosts(response.data);
+
+      await axios
+        .get(`${urlAccount}/Users`)
+        .then((res) => setUsers(res.data))
+        .catch((err) => console.log(err));
     };
     getData();
   }, [mode]);
 
   return (
     <>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} />
       <div className="ask-header mb-3">
         <div id="ask-image"></div>
         <div className="layer p-0 m-0"></div>
@@ -84,7 +91,7 @@ const Forum = (props) => {
             </button>
           </div>
           <Link
-            to={props.data? "/askQuestion": "/login"}
+            to={props.data ? "/askQuestion" : "/login"}
             className="ms-3 ms-md-5 h6 modes px-3 py-2 col-md-2 w-auto ask-btn"
           >
             Ask a question
@@ -94,18 +101,42 @@ const Forum = (props) => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-3 my-4">
-                <div className="bg-light border border-muted p-3">
-                    <h5 className="ms-4">Rules</h5>
-                    <FancyLI number="1" text="No spam/ no advertizing or self-promotion"/>
-                    <FancyLI number="2" text="Do not post “offensive” posts, links or images"/>
-                    <FancyLI number="3" text="Remain respectful of other members"/>
-                    <FancyLI number="4" text="Stay on topic when answering"/>
-                    <FancyLI number="5" text="Be descriptive and precise"/>
+              <div className="bg-light border border-muted p-3">
+                <h5 className="ms-4">Rules</h5>
+                <FancyLI
+                  number="1"
+                  text="No spam/ no advertizing or self-promotion"
+                />
+                <FancyLI
+                  number="2"
+                  text="Do not post “offensive” posts, links or images"
+                />
+                <FancyLI number="3" text="Remain respectful of other members" />
+                <FancyLI number="4" text="Stay on topic when answering" />
+                <FancyLI number="5" text="Be descriptive and precise" />
+              </div>
+              <div className="bg-light border border-muted p-3 my-4">
+                <h5>Top Users</h5>
+                <hr />
+                {users.slice(0, 5).map((v, i) => {
+                  return (
+                    <UserLi
+                      key={i}
+                      id={v.id}
+                      userName={v.userName}
+                      displayName={v.displayName}
+                      bio={v.bio}
+                      rating={v.rating}
+                      imageSrc={v.imageSrc}
+                    />
+                  );
+                })}
+                <div className="text-end">
+                  <Link to="/viewUsers" className="wibix-link fw-bold h6">
+                    View all <i className="fa-solid fa-arrow-right"></i>
+                  </Link>
                 </div>
-                <div className="bg-light border border-muted p-3 my-4">
-                    <h5>Users</h5>
-                    <hr />
-                </div>
+              </div>
             </div>
 
             <div className="col-md-9">

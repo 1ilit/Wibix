@@ -13,7 +13,7 @@ const Navbar = (props) => {
   const logout = (e) => {
     localStorage.clear();
     var url = window.location.href;
-    if (url.slice(url.length - 7, url.length) === "profile") {
+    if (url.slice(url.length - 7, url.length) === "profile" || url.slice(url.length - 9, url.length) === "profile#0") {
       navigate("/signup");
     }
     else{window.location.reload();}
