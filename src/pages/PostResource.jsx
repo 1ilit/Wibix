@@ -104,7 +104,7 @@ const PostResource = (props) => {
       };
 
       await axios
-        .post(`${urlRes}/Upload`, formData, config)
+        .post(`${urlRes}/Upload/${props.data.user?.id}`, formData, config)
         .then((res) => {
           resetForm();
           navigate(-1); //change this

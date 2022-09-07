@@ -46,7 +46,7 @@ const Login = () => {
             JSON.stringify({
               //login: true,
               token: res.data.token,
-              user: res.data.user,
+              user: res.data.visibleInfo,
             })
           );
           //setLogin(true);

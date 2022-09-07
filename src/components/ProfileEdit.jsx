@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ProfileEdit = (props) => {
-  const [bio, setBio] = useState(props.data?.user.bio);
-  const [email, setEmail] = useState(props.data?.user.email);
-  const [displayName, setDisplayName] = useState(props.data?.user.userName);
+  const [bio, setBio] = useState(props.data?.user?.bio);
+  const [email, setEmail] = useState(props.data?.user?.email);
+  const [displayName, setDisplayName] = useState(props.data?.user?.userName);
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -21,7 +21,7 @@ const ProfileEdit = (props) => {
         const reader = new FileReader();
         reader.onload = (x) => {
           setValues({
-            id: props.data?.user.id,
+            id: props.data?.user?.id,
             file: doc,
           });
         };
@@ -60,7 +60,7 @@ const ProfileEdit = (props) => {
 
     const config = {
       headers: {
-        Authorization: "Bearer " + props.data.token,
+        Authorization: "Bearer " + props.data?.token,
       },
     };
 

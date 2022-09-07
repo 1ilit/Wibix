@@ -29,7 +29,7 @@ class App extends Component{
   componentDidMount(){
     var vals=localStorage.getItem('token');
     this.setState({data: JSON.parse(vals)});
-    console.log(this.state.data);
+    //console.log(vals);
   }
     
   render(){

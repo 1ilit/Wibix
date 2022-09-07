@@ -144,17 +144,18 @@ const Signup = () => {
                   />
                 </div>
                 <div className="form-group my-3">
-                  <label htmlFor="username">Username</label>
+                <label htmlFor="username">Email</label>
                   <input
                     type="text"
                     id="username"
                     placeholder="Username"
                     className={"form-control" + applyErrorClass("username")}
-                    name="userName"
+                    name="username"
                     value={values.username}
                     onChange={handleInputChange}
                   />
                 </div>
+                
                 <div className="form-group my-3">
                   <label htmlFor="password">Password</label>
                   <div className="input-group">

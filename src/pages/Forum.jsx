@@ -32,7 +32,7 @@ const Forum = (props) => {
       }
 
       const response = await axios.get(`${urlForum}/${path}`);
-      console.log(response);
+      //console.log(response);
       setPosts(response.data);
 
       await axios

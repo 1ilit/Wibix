@@ -40,10 +40,10 @@ const AskQuestion = (props) => {
     e.preventDefault();
     const config = {
       headers: {
-        Authorization: "Bearer " + props.data.token,
+        Authorization: "Bearer " + props.data?.token,
       },
     };
-    var response = await axios.post(`${urlForum}/AddPost`, {
+    var response = await axios.post(`${urlForum}/AddPost/${props.data?.user?.id}`, {
       heading: title,
       body: html,
     }, config);

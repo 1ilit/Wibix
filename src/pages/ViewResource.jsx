@@ -18,9 +18,9 @@ const ViewResource = (props) => {
   useEffect(() => {
     const getData = async () => {
       await axios
-        .get(`${urlRes}/Resources/${resourceId}`)
+        .get(`${urlRes}/${resourceId}`)
         .then((res) => setRes(res.data))
-        .catch(err=>console.log("error in fetching res"+err));
+        .catch(err=>console.log("error in fetching res "+err));
     };
     getData();
   });
