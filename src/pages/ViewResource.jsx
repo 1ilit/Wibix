@@ -8,6 +8,7 @@ import { Viewer, Worker } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import UserLi from "../components/UserLi";
 
 const ViewResource = (props) => {
   const { resourceId } = useParams();
@@ -20,7 +21,7 @@ const ViewResource = (props) => {
       await axios
         .get(`${urlRes}/${resourceId}`)
         .then((res) => setRes(res.data))
-        .catch(err=>console.log("error in fetching res "+err));
+        .catch((err) => console.log("error in fetching res " + err));
     };
     getData();
   });
@@ -31,7 +32,7 @@ const ViewResource = (props) => {
 
   return (
     <>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} />
 
       <div className="container my-3">
         <p>
@@ -61,13 +62,13 @@ const ViewResource = (props) => {
             <h2>{res.title}</h2>
             <div className="d-flex">
               <i
-                className={"fa-solid fa-sort-up h2 wibix-link mt-2" + applyClick()}
+                className={
+                  "fa-solid fa-sort-up h2 wibix-link mt-2" + applyClick()
+                }
               ></i>
               <p className="h3 mx-3">{res.rating}</p>
               <i
-                className={
-                  "fa-solid fa-sort-down h2 wibix-link" + applyClick()
-                }
+                className={"fa-solid fa-sort-down h2 wibix-link" + applyClick()}
               ></i>
             </div>
           </div>
@@ -98,31 +99,36 @@ const ViewResource = (props) => {
               <h3 className="fw-bold">Description</h3>
               <hr />
               <p dangerouslySetInnerHTML={{ __html: res.description }}></p>
+              <h6 className="mt-3">Posted by</h6>
+              <UserLi
+                id={res.user?.id}
+                userName={res.user?.userName}
+                displayName={res.user?.displayName}
+                bio={res.user?.bio}
+                rating={res.user?.rating}
+                imageSrc={res.user?.imageSrc}
+              />
             </div>
-              
-              <div className="bg-light border border-muted my-5 p-3">
-                <h3 className="fw-bold">You may also like</h3>
-                  <hr />
-                {
-                  res.similar?.map((r, k)=>{
-                    return(
-                      <div className="bg-white border border-muted p-3 mb-3">
-                <Link
-                  to={`/resources/schools/courses/resources/${r.id}`}
-                  className="fw-bold wibix-link"
-                >
-                  {r.title}
-                </Link>
-                <p className="text-muted">Rating: {r.rating}</p>
-              </div>
-                    )
-                  })
-                }
-              </div>
 
+            <div className="bg-light border border-muted my-5 p-3">
+              <h3 className="fw-bold">You may also like</h3>
+              <hr />
+              {res.similar?.map((r, k) => {
+                return (
+                  <div className="bg-white border border-muted p-3 mb-3">
+                    <Link
+                      to={`/resources/schools/courses/resources/${r.id}`}
+                      className="fw-bold wibix-link"
+                    >
+                      {r.title}
+                    </Link>
+                    <p className="text-muted">Rating: {r.rating}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
-
       </div>
 
       <Footer />

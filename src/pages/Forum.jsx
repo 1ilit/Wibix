@@ -31,9 +31,14 @@ const Forum = (props) => {
           break;
       }
 
-      const response = await axios.get(`${urlForum}/${path}`);
+      await axios
+        .get(`${urlForum}/${path}`)
+        .then((response) => setPosts(response.data))
+        .catch((err) => {
+          console.log("err in fetching posts " + err);
+      });
+
       //console.log(response);
-      setPosts(response.data);
 
       await axios
         .get(`${urlAccount}/Users`)

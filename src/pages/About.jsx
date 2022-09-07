@@ -239,7 +239,7 @@ const About = (props) => {
                 <p>
                   Wibix is a fast-growing company and we are always
                   looking for motivated, multi-talented, and organized people to
-                  join our team. We highly incourage web developers that are
+                  join our team. We highly encourage web developers that are
                   interested in contributing to growing the wibix web app to
                   reach out to us by email and send their resumes. For any
                   inquires, fill free to contact us.

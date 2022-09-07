@@ -18,7 +18,7 @@ const HomeBanner = () => {
             <span className="logo-font">wibix</span>
           </h1>
           <p className="mb-5">
-            Join the <strong>biggest and strongest</strong> student hub, get the
+            Join the <strong>biggest and strongest</strong> student hub, get
             answers to your questions, make friends, and enjoy learning.
           </p>
         </div>

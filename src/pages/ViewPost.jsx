@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Moment from "react-moment";
-import { urlForum } from "../endpoints";
+import { urlForum, urlRaw } from "../endpoints";
 import Answer from "../components/Answer";
 import katex from "katex";
 import "katex/dist/katex.min.css";
@@ -39,10 +39,14 @@ const ViewPost = (props) => {
         },
       };
       await axios
-        .post(`${urlForum}/AddAnswer`,{
-          body: html,
-          postId: postId,
-        }, config)
+        .post(
+          `${urlForum}/AddAnswer/${props.data?.user?.id}`,
+          {
+            body: html,
+            postId: postId,
+          },
+          config
+        )
         .then((response) => {
           console.log(response);
           window.location.reload(false);
@@ -95,10 +99,29 @@ const ViewPost = (props) => {
           {post.heading}
         </p>
         <hr />
+
         <h2 className="ms-4">{post.heading}</h2>
-        <p className="ms-4 text-muted">
-          Posted on <Moment format="llll">{post.date}</Moment>
-        </p>
+
+        <div className="ms-4 ms-md-0 d-md-flex justify-content-between align-items-center">
+          <p className="ms-md-4 text-muted">
+            Posted on <Moment format="llll">{post.date}</Moment>
+          </p>
+          <div className="d-flex align-items-center">
+             <span className="me-3 fw-bold">By</span>
+            <img
+              src={
+                post.user?.imageSrc
+                  ? `${urlRaw}/Uploads/${post.user?.imageSrc}`
+                  : "https://cdn2.iconfinder.com/data/icons/business-hr-and-recruitment/100/account_blank_face_dummy_human_mannequin_profile_user_-512.png"
+              }
+              alt="profile pic"
+              height="50"
+              className="border rounded-circle me-3"
+            />
+            <p className="mt-3">{post.user?.displayName}</p>
+          </div>
+        </div>
+
         <hr />
 
         <div className="d-flex">
