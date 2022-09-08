@@ -4,7 +4,7 @@ A student hub web application made with ReactJS and ASP.NET Core 6 webapi.
 
 ---
 
-## Features
+### Features
 
 - Resource sharing
   - Uploading pdf files to the backend
@@ -35,6 +35,8 @@ A student hub web application made with ReactJS and ASP.NET Core 6 webapi.
 ``npm start`` to start the development server in http://localhost:3000
 
 ``npm run build`` to build the application for production
+
+<br/>
 
 ### Note
 
