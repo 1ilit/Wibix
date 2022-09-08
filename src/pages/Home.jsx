@@ -1,16 +1,23 @@
-import React from "react";
+import React, {useRef, useEffect, useState}  from "react";
 import Navbar from "../components/Navbar";
 import HomeBanner from "../components/HomeBanner";
 import Footer from "../components/Footer";
+import {motion} from 'framer-motion'
+import sliderImages from "../sliderimages";
 const Home = (props) => {
+  const [width, setWidth]=useState(0);
+  const slider=useRef();
+  useEffect(()=>{
+    setWidth(slider.current.scrollWidth-slider.current.offsetWidth);
+  }, [])
   return (
     <>
       <Navbar data={props.data} color="white" />
       <HomeBanner />
       <div className="bg-grey m-0 p-2">
-        <h2 className="fw-bold text-center my-4">
+        <motion.h2 className="fw-bold text-center my-4">
           Start your journey on <span className="logo-font">wibix</span>
-        </h2>
+        </motion.h2>
         <div className="v-card bg-white mt-3 mx-5 px-4 py-5 px-md-14 py-md-6 mx-md-12 elevation-4 border border-secondary shadow-lg p-3 mb-5 bg-white rounded">
           <div className="row justify-space-around flex-row px-2">
             <div className="px-0 col-md-4 col-12">
@@ -27,13 +34,15 @@ const Home = (props) => {
               </div>
               <div className="px-8">
                 <h6 className="text-h5 text-md-h6 mb-3 fw-bold text-center">
-                  Practice stock trading with virtual money.
+                  Adipiscing elit, sed do eiusmod sed do eiusmod
                 </h6>
                 <p className="text-center">
-                  No deposit needed. Practice trading with virtual money to
-                  sharpen your knowledge of how the stock market works and how
-                  to use an online brokerage. The Investopedia Simulator will
-                  help you gain confidence before risking your own money.
+                  Sed do eiusmod tempor incididunt ut labore et dolore.dolor sit
+                  amet, consectetur adipiscing elit, sed do eiusmod. sed do
+                  eiusmod tempor incididunt ut labore et dolore.dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod. sed do eiusmod
+                  tempor incididunt ut labore et dolore.dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod
                 </p>
               </div>
             </div>
@@ -51,14 +60,14 @@ const Home = (props) => {
               </div>
               <div className="px-8 mx-3">
                 <h6 className="text-h5 text-md-h6 mb-3 fw-bold text-center">
-                  Trade a wide range of stocks, ETFs, and options.
+                  Incididunt ut labore et dolore sit amet
                 </h6>
                 <p className="text-center">
-                  Whether you are investing for the first time or looking to get
-                  more familiar with more advanced trading methods, there is
-                  something for you. The Investopedia Simulator offers over
-                  6,000 equities on the NYSE and the Nasdaq for you to practice
-                  trading and investing in.
+                  Dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore.dolor sit amet,
+                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                  ut labore et dolore.dolor sit amet, consectetur adipiscing
+                  elit, sed do eiusmod tempor incididunt ut labore et dolore
                 </p>
               </div>
             </div>
@@ -73,20 +82,40 @@ const Home = (props) => {
                   height="auto"
                   className="px-3"
                 />
-                <hr class="flex-grow-1 mt-5" />
+                <hr className="flex-grow-1 mt-5" />
               </div>
               <div className="px-8 mx-3">
                 <h6 className="text-h5 text-md-h6 mb-3 fw-bold text-center">
-                  Trade by yourself or compete with others.
+                  Cupidatat non proident sunt in culpa qui officia
                 </h6>
                 <p className="text-center">
-                  Practice trading and investing by yourself or join a game with
-                  hundreds of thousands of other like-minded educated investors
-                  and compete for the top rank.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                  qui officia deserunt mollit anim id est laborum. Excepteur
+                  sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum. Excepteur sint
+                  occaecat cupidatat non proident, sunt in culpa qui officia
+                  deserunt mollit anim id est laborum.
                 </p>
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="my-5">
+          <h2 className="fw-bold text-center my-4">Connect with people from universities all over the world</h2>
+          <motion.div ref={slider} className="slider">
+            <motion.div drag="x" dragConstraints={{right: 0, left:-width}} className="inner-slider">
+              {
+                sliderImages.map((v, i)=>{
+                  return(
+                    <motion.div key={i} className="item">
+                      <img src={v} alt="slider-img"/>
+                    </motion.div>
+                  )
+                })
+              }
+            </motion.div>
+          </motion.div>
         </div>
       </div>
       <Footer />
