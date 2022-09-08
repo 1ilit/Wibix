@@ -14,6 +14,40 @@ const ViewResource = (props) => {
   const { resourceId } = useParams();
 
   const [res, setRes] = useState({});
+  const [upP, setUpP] = useState(false);
+  const [downP, setDownP] = useState(false);
+  let pseudoR = parseInt(res.rating);
+
+  const upvote = async (e) => {
+    setUpP(!upP);
+
+    var response;
+    if (!upP && !downP) {
+      pseudoR++;
+      response = await axios.post(`${urlRes}/UpvoteRes/${resourceId}`);
+    } else {
+      response = await axios.post(`${urlRes}/DownvoteRes/${resourceId}`);
+    }
+
+    document.getElementById("post-rating").innerHTML = pseudoR;
+    console.log(response);
+  };
+
+  const downvote = async (e) => {
+    setDownP(!downP);
+
+    var response;
+    if (downP && !upP) {
+      response = await axios.post(`${urlRes}/UpvoteRes/${resourceId}`);
+    } else {
+      pseudoR--;
+      response = await axios.post(`${urlRes}/DownvoteRes/${resourceId}`);
+    }
+
+    document.getElementById("post-rating").innerHTML = pseudoR;
+    console.log(response);
+  };
+
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   useEffect(() => {
@@ -25,10 +59,6 @@ const ViewResource = (props) => {
     };
     getData();
   });
-
-  const applyClick = () => {
-    return "";
-  };
 
   return (
     <>
@@ -61,15 +91,24 @@ const ViewResource = (props) => {
           <div className="d-flex justify-content-between">
             <h2>{res.title}</h2>
             <div className="d-flex">
-              <i
-                className={
-                  "fa-solid fa-sort-up h2 wibix-link mt-2" + applyClick()
-                }
-              ></i>
+              <button
+                type="button"
+                onClick={upvote}
+                className="h2 m-0 vote-btn"
+                style={{ color: upP ? "rgba(95, 27, 44, 0.3)" : "#8f352ed2" }}
+              >
+                <i className="fa-solid fa-sort-up h2 wibix-link mt-2"></i>
+              </button>
+
               <p className="h3 mx-3">{res.rating}</p>
-              <i
-                className={"fa-solid fa-sort-down h2 wibix-link" + applyClick()}
-              ></i>
+              <button
+                type="button"
+                onClick={downvote}
+                className="h2 m-0 vote-btn"
+                style={{ color: upP ? "rgba(95, 27, 44, 0.3)" : "#8f352ed2" }}
+              >
+                <i className="fa-solid fa-sort-down h2 wibix-link"></i>
+              </button>
             </div>
           </div>
           <p className="text-muted mt-3">School: {res.school}</p>

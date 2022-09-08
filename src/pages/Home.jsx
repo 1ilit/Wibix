@@ -4,16 +4,15 @@ import HomeBanner from "../components/HomeBanner";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import sliderImages from "../sliderimages";
-// import { urlRes } from "../endpoints";
-// import axios from "axios";
 import { Link } from "react-router-dom";
+
 const Home = (props) => {
   const [width, setWidth] = useState(0);
   const slider = useRef();
 
   useEffect(() => {
     setWidth(slider.current.scrollWidth - slider.current.offsetWidth);
-  }, []);
+  }, [])
 
   return (
     <>

@@ -38,8 +38,6 @@ const Forum = (props) => {
           console.log("err in fetching posts " + err);
       });
 
-      //console.log(response);
-
       await axios
         .get(`${urlAccount}/Users`)
         .then((res) => setUsers(res.data))
@@ -133,6 +131,7 @@ const Forum = (props) => {
                       bio={v.bio}
                       rating={v.rating}
                       imageSrc={v.imageSrc}
+                      data={props.data}
                     />
                   );
                 })}

@@ -35,7 +35,7 @@ const ViewPost = (props) => {
     if (props.data != null) {
       const config = {
         headers: {
-          Authorization: "Bearer " + props.data.token,
+          Authorization: "Bearer " + props.data?.token,
         },
       };
       await axios
@@ -170,9 +170,12 @@ const ViewPost = (props) => {
                   <div>
                     <Answer
                       key={i}
+                      id={a.id}
                       body={a.body}
                       rating={a.rating}
                       date={a.date}
+                      user={a.user}
+                      data={props.data}
                     />
                     <hr />
                   </div>

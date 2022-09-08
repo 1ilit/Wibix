@@ -144,7 +144,7 @@ const Signup = () => {
                   />
                 </div>
                 <div className="form-group my-3">
-                <label htmlFor="username">Email</label>
+                <label htmlFor="username">Username</label>
                   <input
                     type="text"
                     id="username"
@@ -209,8 +209,8 @@ const Signup = () => {
                 >
                   Submit
                 </button>
-                <div id="signinDiv" className="my-3 text-center"></div>
-                {user && <div>{user.email}</div>}
+                {/* <div id="signinDiv" className="my-3 text-center"></div>
+                {user && <div>{user.email}</div>} */}
                 <p className="text-start">
                   By continuing, you agree to our{" "}
                   <Link to="/termsAndConditions" className="wibix-link fw-bold">
