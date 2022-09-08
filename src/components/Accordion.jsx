@@ -87,7 +87,8 @@ const Accordion = () => {
           <div className="accordion-body">
             <ul>
               <li>
-                Proofread your question and make sure everything is well-explained
+                Proofread your question and make sure everything is
+                well-explained
               </li>
             </ul>
           </div>

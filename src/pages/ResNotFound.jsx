@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ResNotFound = (props) => {
   return (
     <>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} />
 
       <div className="container mb-5">
         <p>
@@ -26,9 +26,7 @@ const ResNotFound = (props) => {
         </div>
 
         <div className="li-accent m-3 py-1">
-          <p className="ms-2">
-            Be the first to post your resources.
-          </p>
+          <p className="ms-2">Be the first to post your resources.</p>
         </div>
         <div className="li-accent m-3 py-1">
           <p className="ms-2">

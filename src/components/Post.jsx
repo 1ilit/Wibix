@@ -5,7 +5,7 @@ const Post = (props) => {
   return (
     <>
       <div className="d-flex border border-muted m-4 p-3 bg-light">
-        <div className="mx-3 mt-1 text-center"> 
+        <div className="mx-3 mt-1 text-center">
           <p className="mb-0">Votes {props.rating}</p>
           <p className="mb-0 text-muted">Answers {props.answers}</p>
         </div>

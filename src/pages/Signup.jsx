@@ -144,7 +144,7 @@ const Signup = () => {
                   />
                 </div>
                 <div className="form-group my-3">
-                <label htmlFor="username">Username</label>
+                  <label htmlFor="username">Username</label>
                   <input
                     type="text"
                     id="username"
@@ -155,7 +155,7 @@ const Signup = () => {
                     onChange={handleInputChange}
                   />
                 </div>
-                
+
                 <div className="form-group my-3">
                   <label htmlFor="password">Password</label>
                   <div className="input-group">

@@ -164,9 +164,9 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="d-flex justify-content-between">
-                  <Link to="/" className="wibix-link fw-bold">
+                  {/* <Link to="/" className="wibix-link fw-bold">
                     Forgot your password?
-                  </Link>
+                  </Link> */}
                   <Link to="/signup" className="wibix-link fw-bold">
                     Don't have an account?
                   </Link>

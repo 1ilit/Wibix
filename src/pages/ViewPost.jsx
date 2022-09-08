@@ -107,7 +107,7 @@ const ViewPost = (props) => {
             Posted on <Moment format="llll">{post.date}</Moment>
           </p>
           <div className="d-flex align-items-center">
-             <span className="me-3 fw-bold">By</span>
+            <span className="me-3 fw-bold">By</span>
             <img
               src={
                 post.user?.imageSrc

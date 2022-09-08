@@ -5,7 +5,11 @@ const Tag = (props) => {
     <>
       <button
         type="button"
-        className={!props.selected?"px-3 py-2 m-2 bg-beige border rounded wibix-link tag": "px-3 py-2 m-2 border rounded wibix-link tag"}
+        className={
+          !props.selected
+            ? "px-3 py-2 m-2 bg-beige border rounded wibix-link tag"
+            : "px-3 py-2 m-2 border rounded wibix-link tag"
+        }
       >
         <span>
           {props.category}

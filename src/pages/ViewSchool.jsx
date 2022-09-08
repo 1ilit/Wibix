@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link , useNavigate} from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { urlRes } from "../endpoints";
 import Navbar from "../components/Navbar";
@@ -13,7 +13,7 @@ const ViewSchool = (props) => {
   const [searchStr, setSearchStr] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -31,7 +31,6 @@ const ViewSchool = (props) => {
     });
 
     setFilteredData(newFilter);
-    
   };
 
   const handleCourseSearch = async (e) => {
@@ -46,7 +45,6 @@ const ViewSchool = (props) => {
       .catch((error) => navigate("/courseNotFound"));
   };
 
-
   const clearFilter = () => {
     setSearchStr("");
     setFilteredData([]);
@@ -54,7 +52,7 @@ const ViewSchool = (props) => {
 
   return (
     <>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} />
       <div className="container">
         <p>
           <Link to="/resources" className="wibix-link">
@@ -72,15 +70,15 @@ const ViewSchool = (props) => {
               Total resources available: {school.numberOfRes}
             </p>
             <p className="text-muted">
-            Total courses registered: {school.courses?.length}
+              Total courses registered: {school.courses?.length}
             </p>
           </div>
         </div>
         <hr />
 
         <div className="text-center mt-4">
-              <h4>Search for your course</h4>
-          </div>
+          <h4>Search for your course</h4>
+        </div>
         <form className="my-4">
           <div className="d-flex justify-content-center">
             <input
@@ -102,11 +100,7 @@ const ViewSchool = (props) => {
           {filteredData.length !== 0 && (
             <div className="bg-light border border-muted w-50 mx-auto my-2">
               <div className="text-end">
-                <button
-                  type="button"
-                  className="px-2"
-                  onClick={clearFilter}
-                >
+                <button type="button" className="px-2" onClick={clearFilter}>
                   <i className="fa-solid fa-xmark"></i>
                 </button>
               </div>
@@ -126,7 +120,7 @@ const ViewSchool = (props) => {
           )}
         </form>
 
-        <hr/>
+        <hr />
 
         <div className="my-2">
           <button
@@ -170,11 +164,6 @@ const ViewSchool = (props) => {
             );
           })}
         </div>
-          
-
-          
-
-
       </div>
       <Footer />
     </>

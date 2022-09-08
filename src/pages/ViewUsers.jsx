@@ -30,8 +30,8 @@ const ViewUsers = (props) => {
       </div>
       <div className="container">
         <div className="row">
-        <div className="col-md-4">
-            {users.slice(2*users.length / 3, users.length).map((v, i) => {
+          <div className="col-md-4">
+            {users.slice((2 * users.length) / 3, users.length).map((v, i) => {
               return (
                 <UserLi
                   key={i}
@@ -46,19 +46,21 @@ const ViewUsers = (props) => {
             })}
           </div>
           <div className="col-md-4">
-            {users.slice(users.length / 3, 2*users.length/3).map((v, i) => {
-              return (
-                <UserLi
-                  key={i}
-                  id={v.id}
-                  userName={v.userName}
-                  displayName={v.displayName}
-                  bio={v.bio}
-                  rating={v.rating}
-                  imageSrc={v.imageSrc}
-                />
-              );
-            })}
+            {users
+              .slice(users.length / 3, (2 * users.length) / 3)
+              .map((v, i) => {
+                return (
+                  <UserLi
+                    key={i}
+                    id={v.id}
+                    userName={v.userName}
+                    displayName={v.displayName}
+                    bio={v.bio}
+                    rating={v.rating}
+                    imageSrc={v.imageSrc}
+                  />
+                );
+              })}
           </div>
           <div className="col-md-4">
             {users.slice(0, users.length / 3).map((v, i) => {
@@ -75,8 +77,6 @@ const ViewUsers = (props) => {
               );
             })}
           </div>
-          
-          
         </div>
       </div>
       <Footer />

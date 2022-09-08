@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 const Terms = (props) => {
   return (
     <>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} />
       <div className="ask-header mb-3">
         <div id="ask-image"></div>
         <div className="layer p-0 m-0"></div>
@@ -33,7 +33,7 @@ const Terms = (props) => {
               </p>
               <p className="px-3 py-2 bg-white li-accent">
                 <a href="#3" className="wibix-link no-decor fw-bold">
-                    License
+                  License
                 </a>
               </p>
               <p className="px-3 py-2 bg-white li-accent">
@@ -75,7 +75,9 @@ const Terms = (props) => {
           </div>
           <div className="col-md-9">
             <div className="ms-md-5">
-              <h2 className="fw-bold" id="1">Welcome to <span className="logo-font">wibix</span></h2>
+              <h2 className="fw-bold" id="1">
+                Welcome to <span className="logo-font">wibix</span>
+              </h2>
 
               <p>
                 These terms and conditions outline the rules and regulations for
@@ -146,7 +148,10 @@ const Terms = (props) => {
               <p>
                 This Agreement shall begin on the date hereof. Our Terms and
                 Conditions were created with the help of the{" "}
-                <a href="https://www.termsandconditionsgenerator.com/" className="wibix-link"> 
+                <a
+                  href="https://www.termsandconditionsgenerator.com/"
+                  className="wibix-link"
+                >
                   Free Terms and Conditions Generator
                 </a>
                 .

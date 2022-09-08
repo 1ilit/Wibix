@@ -68,7 +68,9 @@ const ProfileEdit = (props) => {
       .post(`${urlAccount}/UpdateProfile`, formData, config)
       .then((res) => {
         resetForm();
-        alert("Your information has been successfully update. \n The changes will be displayed soon.")
+        alert(
+          "Your information has been successfully update. \n The changes will be displayed soon."
+        );
         navigate(0);
       })
       .catch((err) => console.log(err));
@@ -96,7 +98,9 @@ const ProfileEdit = (props) => {
             </div>
 
             <div className="form-group my-3">
-              <label className="text-muted text-start">Update your display name</label>
+              <label className="text-muted text-start">
+                Update your display name
+              </label>
               <input
                 name="name"
                 id="name"

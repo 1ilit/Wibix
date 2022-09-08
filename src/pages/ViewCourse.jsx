@@ -52,7 +52,7 @@ const ViewCourse = (props) => {
 
   return (
     <>
-      <Navbar data={props.data}/>
+      <Navbar data={props.data} />
       <div className="container">
         <p>
           <Link to="/resources" className="wibix-link">
@@ -156,7 +156,10 @@ const ViewCourse = (props) => {
         <div className="my-4 d-flex no-wrap">
           {course.resources?.map((c, k) => {
             return (
-              <div className="me-3 bg-light border border-muted p-3 w-md-20" key={k}>
+              <div
+                className="me-3 bg-light border border-muted p-3 w-md-20"
+                key={k}
+              >
                 <Link
                   to={`/resources/schools/courses/resources/${c.id}`}
                   className="fw-bold wibix-link"

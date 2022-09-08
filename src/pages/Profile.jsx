@@ -6,13 +6,13 @@ import ProfileMain from "../components/ProfileMain";
 import ProfilePosts from "../components/ProfilePosts";
 import axios from "axios";
 import { urlAccount } from "../endpoints";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const Profile = (props) => {
   const [section, setSection] = useState("profile");
   const [component, setComponent] = useState(<ProfileMain data={props.data} />);
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     switch (section) {

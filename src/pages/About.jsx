@@ -33,7 +33,7 @@ const About = (props) => {
   };
   return (
     <div>
-      <Navbar data={props.data} color="white"/>
+      <Navbar data={props.data} color="white" />
 
       <AboutBanner />
       <div className="container">
@@ -223,7 +223,6 @@ const About = (props) => {
                   </div>
                 </Carousel.Item>
               </Carousel>
-
             </div>
 
             {/* careers */}
@@ -237,12 +236,12 @@ const About = (props) => {
               <div className="col-md-7 mx-4">
                 <h3 className="fw-bold">Join our team</h3>
                 <p>
-                  Wibix is a fast-growing company and we are always
-                  looking for motivated, multi-talented, and organized people to
-                  join our team. We highly encourage web developers that are
-                  interested in contributing to growing the wibix web app to
-                  reach out to us by email and send their resumes. For any
-                  inquires, fill free to contact us.
+                  Wibix is a fast-growing company and we are always looking for
+                  motivated, multi-talented, and organized people to join our
+                  team. We highly encourage web developers that are interested
+                  in contributing to growing the wibix web app to reach out to
+                  us by email and send their resumes. For any inquires, fill
+                  free to contact us.
                 </p>
               </div>
               <hr />

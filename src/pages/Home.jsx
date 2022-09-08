@@ -12,7 +12,7 @@ const Home = (props) => {
 
   useEffect(() => {
     setWidth(slider.current.scrollWidth - slider.current.offsetWidth);
-  }, [])
+  }, []);
 
   return (
     <>
@@ -126,36 +126,35 @@ const Home = (props) => {
           </motion.div>
         </div>
 
-        <hr/>
+        <hr />
 
         <div className="row mt-5 mb-4 mx-0">
-          
-            <div className="col-md-6 text-end">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/3846/3846889.png"
-                width="200"
-                alt="folder pic"
-                className="me-3"
-              />
-            </div>
+          <div className="col-md-6 text-end">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3846/3846889.png"
+              width="200"
+              alt="folder pic"
+              className="me-3"
+            />
+          </div>
 
-            <div className="col-md-6 text-start">
-              <div className="mb-5 ms-3">
-                <h5 className="fw-bold">Become One of Us!</h5>
-                <p className="my-3 mb-4 w-md-50">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veritatis quaerat temporibus accusantium suscipit eaque quisquam blanditiis sunt accusamus dolorem optio quo impedit excepturi quod exercitationem error harum eum facilis!
-                </p>
-                <h5 className="mt-3">
-                  <Link
-                    to="/signup"
-                    className="btn-burnt-umber px-3 py-2"
-                  >
-                    Get Started
-                  </Link>
-                </h5>
-              </div>
+          <div className="col-md-6 text-start">
+            <div className="mb-5 ms-3">
+              <h5 className="fw-bold">Become One of Us!</h5>
+              <p className="my-3 mb-4 w-md-50">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Ratione, veritatis quaerat temporibus accusantium suscipit eaque
+                quisquam blanditiis sunt accusamus dolorem optio quo impedit
+                excepturi quod exercitationem error harum eum facilis!
+              </p>
+              <h5 className="mt-3">
+                <Link to="/signup" className="btn-burnt-umber px-3 py-2">
+                  Get Started
+                </Link>
+              </h5>
             </div>
           </div>
+        </div>
       </div>
       <Footer />
     </>
