@@ -42,7 +42,9 @@ A student hub web application made with ReactJS and ASP.NET Core 6 webapi.
 
 When connecting to the backend make sure to use the correct URL in ```.env.development```
 
+<br/>
 
+<img src="./demo.gif" alt="demo">
 
 
 
